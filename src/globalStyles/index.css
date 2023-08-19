@@ -1,0 +1,57 @@
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --tertiary-color: #342567;
+  --font-family: Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input {
+  font-size: 1.6rem;
+}
+
+/* NavLinks active class */
+
+.active {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 10px;
+}
+
+/* Media queries for font size scaling */
+@media (max-width: 768px) {
+  body,
+  input {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body,
+  input {
+    font-size: 1.2rem;
+  }
+}
