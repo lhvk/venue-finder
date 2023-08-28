@@ -1,4 +1,4 @@
-import { HoverNavLink, Logo, LogoLink, NavHeader } from "./styled";
+import { LogoLink, NavHeader } from "./styled";
 import { getLocalStorageItem } from "../../utils/localStorageUtils";
 import NavLinks from "./NavLinks";
 import { useLocation } from "react-router-dom";
