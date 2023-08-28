@@ -1,8 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat&display=swap");
+@import url("/node_modules/loaders.css/loaders.min.css");
+
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat&display=swap");
+
 :root {
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --tertiary-color: #342567;
-  --font-family: Arial, sans-serif;
+  /* Colors */
+  --clr-primary: #ff6000;
+  --clr-secondary: #454545;
+  --clr-white: #fff;
+  --clr-green: #008000;
+  --clr-red: #ff0f0f;
+  --clr-text: #333;
+
+  /* Fonts */
+  --font-main: "Roboto", sans-serif;
+  --font-heading: "Raleway", serif;
+  --clr-font-heading: var(--clr-primary);
 }
 
 *,
@@ -18,10 +33,20 @@ html {
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-main);
   font-size: 1.6rem;
   line-height: 1.5;
-  color: #333;
+  color: var(--clr-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--clr-font-heading);
 }
 
 a {
@@ -39,6 +64,15 @@ input {
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 10px;
+}
+
+/* Loader classes */
+
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
 }
 
 /* Media queries for font size scaling */
