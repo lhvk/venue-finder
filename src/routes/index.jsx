@@ -4,6 +4,8 @@ import Home from "./Home";
 import Profile from "./Profile";
 import Login from "./Login";
 import Register from "./Register";
+import Venue from "./Venue";
+import RouteNotFound from "./RouteNotFound";
 
 export default function ApplicationRouter() {
   return (
@@ -16,6 +18,10 @@ export default function ApplicationRouter() {
           element={<Home />}
         />
         <Route
+          path="/venue/:id"
+          element={<Venue />}
+        />
+        <Route
           path="/profile"
           element={<Profile />}
         />
@@ -26,6 +32,10 @@ export default function ApplicationRouter() {
         <Route
           path="/login"
           element={<Login />}
+        />
+        <Route
+          path="*"
+          element={<RouteNotFound />}
         />
       </Route>
     </Routes>
