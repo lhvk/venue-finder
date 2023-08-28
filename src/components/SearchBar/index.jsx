@@ -13,7 +13,7 @@ export default function SearchBar() {
   };
 
   return (
-    <SearchContainer isTablet={isTablet}>
+    <SearchContainer $isTablet={isTablet}>
       <Icon id="search-icon" />
       <SearchInput
         type="text"

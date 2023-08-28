@@ -5,10 +5,10 @@ export const SearchContainer = styled.div`
   opacity: 0.8;
   display: flex;
   align-items: center;
-  background: white;
+  background: var(--clr-white);
   padding-left: 8px;
   border-radius: 15px;
-  width: ${(props) => (props.isTablet ? "480px" : "600px")};
+  width: ${(props) => (props.$isTablet ? "480px" : "600px")};
 
   @media (${MOBILE}) {
     width: 100%;
@@ -16,7 +16,7 @@ export const SearchContainer = styled.div`
 `;
 
 export const SearchInput = styled.input`
-  background: white;
+  background: var(--clr-white);
   border: none;
   width: 100%;
   outline: none;

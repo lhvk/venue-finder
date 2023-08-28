@@ -2,9 +2,10 @@ import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const NavHeader = styled.header`
-  position: ${(props) => (props.isHomePage ? "absolute" : "relative")};
-  background-color: ${(props) => (props.isHomePage ? "transparent" : "white")};
-  color: ${(props) => (props.isHomePage ? "white" : "")};
+  position: ${(props) => (props.$isHomePage ? "absolute" : "relative")};
+  background-color: ${(props) =>
+    props.$isHomePage ? "transparent" : "var(--clr-white)"};
+  color: ${(props) => (props.$isHomePage ? "var(--clr-white)" : "")};
   display: flex;
   justify-content: center;
   width: 100%;
@@ -34,36 +35,33 @@ export const Pipe = styled.hr`
   transform: rotate(180deg);
 `;
 
-export const StyledNavLink = styled(NavLink)`
+export const HoverNavLink = styled(NavLink)`
   &:hover {
     opacity: 0.7;
   }
 `;
 
-export const ProfileLink = styled(StyledNavLink)`
+export const LogoLink = styled(HoverNavLink)`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  .half-text {
+    color: var(--clr-primary);
+  }
+`;
+
+export const ProfileLink = styled(HoverNavLink)`
   display: flex;
   align-items: center;
   gap: 5px;
-`;
-
-export const LoginLink = styled(NavLink)`
-  color: inherit;
-  font-size: inherit;
-  background: transparent;
-  border: 1px solid white;
-  padding-inline: 10px;
-
-  &:hover {
-    cursor: pointer;
-    opacity: 0.7;
-  }
 `;
 
 export const LogoutLink = styled.button`
   color: inherit;
   font-size: inherit;
   background: transparent;
-  border: 1px solid white;
+  border: 1px solid var(--clr-white);
   padding: 3px 10px;
 
   &:hover {
