@@ -5,7 +5,7 @@ export const NavHeader = styled.header`
   position: ${(props) => (props.$isHomePage ? "absolute" : "relative")};
   background-color: ${(props) =>
     props.$isHomePage ? "transparent" : "var(--clr-white)"};
-  color: ${(props) => (props.$isHomePage ? "var(--clr-white)" : "")};
+  color: ${(props) => (props.$isHomePage ? "var(--clr-white)" : "inherit")};
   display: flex;
   justify-content: center;
   width: 100%;
@@ -42,6 +42,8 @@ export const HoverNavLink = styled(NavLink)`
 `;
 
 export const LogoLink = styled(HoverNavLink)`
+  color: ${(props) =>
+    props.$isHomePage ? "var(--clr-white)" : "var(--clr-secondary)"};
   display: flex;
   gap: 10px;
   align-items: center;

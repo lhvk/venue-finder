@@ -18,7 +18,7 @@ export const ButtonNavLink = styled(NavLink)`
 export const Button = styled.button`
   color: var(--clr-white);
   font-size: inherit;
-  background-color: var(--clr-primary);
+  background-color: var(--clr-secondary);
   border: none;
   padding-inline: ${(props) => props.$px || "16px"};
   padding-block: ${(props) => props.$py || "8px"};

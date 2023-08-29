@@ -41,7 +41,7 @@ export const TagContainer = styled.div`
   position: absolute;
   top: 30px;
   right: 20px;
-  background-color: var(--clr-red);
+  background-color: var(--clr-primary);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;

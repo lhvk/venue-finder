@@ -21,6 +21,7 @@ export const HeroBanner = styled.div`
   }
 
   & .hero-content {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;

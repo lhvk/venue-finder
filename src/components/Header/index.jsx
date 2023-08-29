@@ -12,12 +12,14 @@ export default function Header() {
   return (
     <NavHeader $isHomePage={isHomePage}>
       <div className="nav-header-inner">
-        <LogoLink to="/">
+        <LogoLink
+          $isHomePage={isHomePage}
+          to="/">
           <Icon
             id="logo-icon"
             width="50px"
             height="50px"
-            fill={isHomePage ? "var(--clr-white)" : "#333"}
+            fill={isHomePage ? "var(--clr-white)" : "var(--clr-secondary)"}
           />
           <strong>
             venue
