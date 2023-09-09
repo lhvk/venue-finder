@@ -11,8 +11,9 @@ import { Icon } from "../Icon";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { TABLET } from "../../config";
 import { getAltText, getFlag } from "../../utils/countryCodeUtils";
+import { searchHandler } from "./searchHandler";
 
-export default function SearchBar({ searchResult, onChange }) {
+export default function SearchBar({ setSearchResult, searchResult, venues }) {
   const isTablet = useMediaQuery(TABLET);
 
   return (
@@ -23,18 +24,16 @@ export default function SearchBar({ searchResult, onChange }) {
           type="search"
           placeholder="Search for venues..."
           value={searchResult.query}
-          onChange={onChange}
+          onChange={searchHandler(venues, setSearchResult)}
         />
       </SearchContainer>
       {searchResult.query && (
         <ResultsContainer $isTablet={isTablet}>
           {searchResult.list.length > 0 ? (
-            searchResult.list.map((ven, i) => {
+            searchResult.list.map((ven) => {
               return (
-                <ResultItem>
-                  <VenueLink
-                    key={i}
-                    to={`/venue/${ven.id}`}>
+                <ResultItem key={ven.id}>
+                  <VenueLink to={`/venue/${ven.id}`}>
                     <Flag
                       src={getFlag(ven.location?.country)}
                       alt={getAltText(ven.location?.country)}

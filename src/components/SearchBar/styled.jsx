@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { MOBILE } from "../../config";
 import { Link } from "react-router-dom";
 
 export const SearchContainer = styled.div`
@@ -13,10 +12,6 @@ export const SearchContainer = styled.div`
 
   &:focus-within {
     opacity: 1;
-  }
-
-  @media (${MOBILE}) {
-    width: 100%;
   }
 `;
 

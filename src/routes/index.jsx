@@ -6,6 +6,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Venue from "./Venue";
 import RouteNotFound from "./RouteNotFound";
+import CreateVenue from "./CreateVenue";
 
 export default function ApplicationRouter() {
   return (
@@ -20,6 +21,10 @@ export default function ApplicationRouter() {
         <Route
           path="/venue/:id"
           element={<Venue />}
+        />
+        <Route
+          path="/create-venue"
+          element={<CreateVenue />}
         />
         <Route
           path="/profile"

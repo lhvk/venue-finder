@@ -1,3 +1,4 @@
+import { Button } from "../../components/Buttons";
 import {
   ErrorMessage,
   FormContainer,
@@ -7,9 +8,8 @@ import {
   FormFooter,
   RegisterLink,
 } from "../styled";
-import { Button } from "../../Buttons";
 
-export default function LoginForm({ handleSubmit, register, errors }) {
+export function LoginForm({ handleSubmit, register, errors }) {
   return (
     <FormContainer>
       <Form onSubmit={handleSubmit}>

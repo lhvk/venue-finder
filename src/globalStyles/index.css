@@ -7,17 +7,19 @@
 
 :root {
   /* Colors */
-  --clr-primary: #ff6000;
+  --clr-primary: #ff4b2b;
   --clr-secondary: #1d5b79;
   --clr-white: #fff;
   --clr-green: #008000;
   --clr-red: #ff0f0f;
-  --clr-text: #333;
+  --clr-dark: #333;
+  --clr-grey: #f0f0f0;
+  --clr-pink: #ff416c;
 
   /* Fonts */
   --font-main: "Roboto", sans-serif;
   --font-heading: "Raleway", serif;
-  --clr-font-heading: var(--clr-primary);
+  --clr-font-heading: var(--clr-pink);
 }
 
 *,
@@ -36,7 +38,7 @@ body {
   font-family: var(--font-main);
   font-size: 1.6rem;
   line-height: 1.5;
-  color: var(--clr-text);
+  color: var(--clr-dark);
 }
 
 h1,

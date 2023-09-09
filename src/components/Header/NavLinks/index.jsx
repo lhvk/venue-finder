@@ -1,7 +1,12 @@
 import React from "react";
 import { Icon } from "../../Icon";
-import { ButtonNavLink as LoginLink } from "../../Buttons";
-import { HoverNavLink, LogoutLink, Pipe, ProfileLink } from "../styled";
+import {
+  HoverNavLink,
+  LoginLink,
+  LogoutLink,
+  Pipe,
+  ProfileLink,
+} from "../styled";
 import { logout } from "../../../utils/authUtils";
 import { useNavigate } from "react-router-dom";
 
@@ -19,8 +24,12 @@ export default function NavLinks({ isLoggedin, isHomePage }) {
         />
         profile
       </ProfileLink>
-      <Pipe $transform={"20"} />
+      <Pipe
+        $transform={"20"}
+        $isHomePage={isHomePage}
+      />
       <LogoutLink
+        $isHomePage={isHomePage}
         to="/"
         onClick={() => logout(navigate)}>
         logout

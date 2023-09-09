@@ -42,7 +42,7 @@ export const HeroLogo = styled.div`
     line-height: 1;
   }
   .half-text {
-    color: var(--clr-primary);
+    color: var(--clr-pink);
   }
 
   .logo-slogan {

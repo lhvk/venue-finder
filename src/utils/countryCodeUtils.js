@@ -197,15 +197,33 @@ const countryCodes = {
   Zambia: "ZM",
   Zimbabwe: "ZW",
 };
+
+const continents = [
+  "Africa",
+  "Antarctica",
+  "Asia",
+  "Europe",
+  "North America",
+  "Oceania",
+  "South America",
+];
+
+// Get random flag to populate venues where there country is misspelled or no country is set
+function getRandomCountryCode() {
+  const countriesArray = Object.values(countryCodes);
+  const randomIndex = Math.floor(Math.random() * countriesArray.length);
+  return countriesArray[randomIndex];
+}
+
 export function getFlag(countryName) {
   // Remove spaces and symbols from the country name
   const cleanedCountryName = countryName
     .replace(/[^\w\s]/g, "")
     .replace(/\s/g, "");
 
-  // Check if the cleaned country name exists in the countryCodes object
+  // Check if the cleaned country name exists in the countryCodes object. If not, populate with random flag
   if (!countryCodes.hasOwnProperty(cleanedCountryName)) {
-    return null;
+    return `https://flagsapi.com/${getRandomCountryCode()}/flat/24.png`;
   }
 
   // Get the country code and return the flag URL
@@ -225,4 +243,28 @@ export function getAltText(countryName) {
 
   // Get the country code and return the flag URL
   return countryName;
+}
+
+export function getCountries() {
+  function separateCapitalLetters(str) {
+    return str.replace(/([A-Z])/g, " $1").trim();
+  }
+
+  return Object.keys(countryCodes).map((countryName) => (
+    <option
+      key={countryName}
+      value={countryName}>
+      {separateCapitalLetters(countryName)}
+    </option>
+  ));
+}
+
+export function getContinents() {
+  return continents.map((continentName) => (
+    <option
+      key={continentName}
+      value={continentName}>
+      {continentName}
+    </option>
+  ));
 }

@@ -4,8 +4,8 @@ import { loginSchema } from "../../schemas";
 import { LOGIN_URL, POST } from "../../config";
 import { fetchOptions } from "../../api";
 import { setLocalStorageItem } from "../../utils/localStorageUtils";
-import LoginForm from "../../components/Forms/LoginForm";
 import { useNavigate } from "react-router-dom";
+import { LoginForm } from "../../forms/LoginForm";
 
 export default function Login() {
   const {

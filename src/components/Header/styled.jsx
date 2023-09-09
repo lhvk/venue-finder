@@ -49,7 +49,7 @@ export const LogoLink = styled(HoverNavLink)`
   align-items: center;
 
   .half-text {
-    color: var(--clr-primary);
+    color: var(--clr-pink);
   }
 `;
 
@@ -59,11 +59,26 @@ export const ProfileLink = styled(HoverNavLink)`
   gap: 5px;
 `;
 
+export const LoginLink = styled(NavLink)`
+  color: inherit;
+  font-size: inherit;
+  background: transparent;
+  border: 1px solid ${"var(--clr-white)"};
+  padding-inline: ${(props) => props.$px || "10px"};
+  padding-block: ${(props) => props.$py || null};
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+`;
+
 export const LogoutLink = styled.button`
   color: inherit;
   font-size: inherit;
   background: transparent;
-  border: 1px solid var(--clr-white);
+  border: 1px solid
+    ${(props) => (props.$isHomePage ? "var(--clr-white)" : "var(--clr-dark)")};
   padding: 3px 10px;
 
   &:hover {

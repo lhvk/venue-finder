@@ -8,8 +8,9 @@ import {
   TagContainer,
   Title,
   CardFooter,
+  CardVenueLink,
 } from "./styled";
-import { ButtonNavLink } from "../Buttons";
+import { PLACEHOLDER_IMG } from "../../config";
 
 export function Card({
   title,
@@ -32,7 +33,7 @@ export function Card({
   }
 
   return (
-    <Container $bgImage={bgImage}>
+    <Container $bgImage={bgImage || PLACEHOLDER_IMG}>
       {tag && (
         <TagContainer>
           <span>{tag}</span>
@@ -51,12 +52,12 @@ export function Card({
               {StarRating(totalReviews, ratingAverage)}
             </ReviewsContainer>
             <ButtonContainer>
-              <ButtonNavLink
+              <CardVenueLink
                 $py="5px"
                 $px="20px"
                 to={`/venue/${id}`}>
                 view
-              </ButtonNavLink>
+              </CardVenueLink>
             </ButtonContainer>
           </CardFooter>
         </div>

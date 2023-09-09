@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const Container = styled.div`
@@ -41,7 +42,7 @@ export const TagContainer = styled.div`
   position: absolute;
   top: 30px;
   right: 20px;
-  background-color: var(--clr-primary);
+  background: linear-gradient(var(--clr-pink), var(--clr-primary));
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -64,6 +65,20 @@ export const ReviewsContainer = styled.div`
 
   & .total-reviews {
     margin-left: 8px;
+  }
+`;
+
+export const CardVenueLink = styled(NavLink)`
+  color: inherit;
+  font-size: inherit;
+  background: transparent;
+  border: 1px solid ${"var(--clr-white)"};
+  padding-inline: ${(props) => props.$px || "10px"};
+  padding-block: ${(props) => props.$py || null};
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
   }
 `;
 

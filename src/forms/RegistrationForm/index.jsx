@@ -1,4 +1,4 @@
-import { Button } from "../../Buttons";
+import { Button } from "../../components/Buttons";
 import {
   CheckBox,
   ErrorMessage,
@@ -12,7 +12,7 @@ import {
   VenueManagerContainer,
 } from "../styled";
 
-export default function RegistrationForm({ handleSubmit, register, errors }) {
+export function RegistrationForm({ handleSubmit, register, errors }) {
   return (
     <FormContainer>
       <Form
