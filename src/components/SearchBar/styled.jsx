@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
+import { MOBILE } from "../../config";
 
 export const SearchContainer = styled.div`
   opacity: 0.8;
@@ -8,7 +9,7 @@ export const SearchContainer = styled.div`
   background: var(--clr-white);
   padding-left: 8px;
   border-radius: 15px;
-  width: ${(props) => (props.$isTablet ? "480px" : "600px")};
+  width: 100%;
 
   &:focus-within {
     opacity: 1;
@@ -27,10 +28,8 @@ export const SearchInput = styled.input`
 export const ResultsContainer = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 12.5px;
   overflow: hidden;
-  width: ${(props) => (props.$isTablet ? "480px" : "600px")};
-  opacity: 0.8;
+  width: 100%;
   background-color: var(--clr-white);
   border-radius: 15px;
   padding: 12.5px;
@@ -38,19 +37,19 @@ export const ResultsContainer = styled.ul`
   top: 240px;
   z-index: 99999;
 
-  &:focus-within,
-  &:hover {
-    opacity: 1;
+  @media (${MOBILE}) {
+    top: 210px;
   }
 `;
 
 export const ResultItem = styled.li`
-  color: var(--clr-text);
+  color: var(--clr-dark);
   text-align: left;
   cursor: pointer;
+  padding-block: 8px;
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: var(--clr-grey);
   }
 `;
 
@@ -65,6 +64,6 @@ export const VenueLink = styled(Link)`
 `;
 
 export const NoResults = styled.span`
-  color: var(--clr-text);
+  color: var(--clr-dark);
   text-align: left;
 `;

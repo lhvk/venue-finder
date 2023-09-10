@@ -3,11 +3,11 @@ import { createVenueSchema } from "../../schemas";
 import { useForm } from "react-hook-form";
 import { VENUE_URL, POST } from "../../config";
 import { fetchOptions } from "../../api";
-import { CreateVenueForm } from "../../forms/CreateVenueForm";
+import { VenueForm as CreateVenueForm } from "../../forms/VenueForm";
 import { useNavigate } from "react-router-dom";
 import { getLocalStorageItem } from "../../utils/localStorageUtils";
-import { CreateVenueMain } from "./styled";
 import { createVenueDefaultValues } from "../../schemas/createVenueDefaultValues";
+import { Button } from "../../components/Buttons";
 
 export default function CreateVenue() {
   const navigate = useNavigate();
@@ -26,7 +26,6 @@ export default function CreateVenue() {
   });
 
   const onSubmit = async (formData) => {
-    console.log("formData", formData);
     try {
       const response = await fetch(
         VENUE_URL,
@@ -35,24 +34,33 @@ export default function CreateVenue() {
       if (!response.ok)
         throw new Error(`Something went wrong: ${response.status} `);
 
-      const data = await response.json();
-      console.log(data);
+      const newVenue = await response.json();
 
       resetForm();
-      navigate("/venue/:id");
+      navigate(`/venue/${newVenue.id}`);
     } catch (err) {
       console.error(err);
     }
   };
 
   return (
-    <CreateVenueMain>
-      <h1>Create venue</h1>
-      <CreateVenueForm
-        register={register}
-        handleSubmit={handleSubmit(onSubmit)}
-        errors={errors}
-      />
-    </CreateVenueMain>
+    <>
+      <div>
+        <Button onClick={() => navigate(-1)}>Back</Button>
+      </div>
+      <main
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}>
+        <h1>Create venue</h1>
+        <CreateVenueForm
+          register={register}
+          handleSubmit={handleSubmit(onSubmit)}
+          errors={errors}
+        />
+      </main>
+    </>
   );
 }

@@ -20,7 +20,7 @@ export default function NavLinks({ isLoggedin, isHomePage }) {
           id="user-icon"
           width="20px"
           height="20px"
-          fill={isHomePage ? "var(--clr-white)" : "var(--clr-secondary)"}
+          fill={isHomePage ? "var(--clr-white)" : "var(--clr-dark)"}
         />
         profile
       </ProfileLink>

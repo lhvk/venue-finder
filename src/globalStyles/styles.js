@@ -10,6 +10,7 @@ export const buttonStyles = css`
   cursor: pointer;
   max-width: ${(props) => props.$maxWidth || "fit-content"};
   width: ${(props) => props.$width};
+  border-radius: 8px;
 
   &:hover {
     background: linear-gradient(

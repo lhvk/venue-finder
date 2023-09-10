@@ -1,10 +1,5 @@
-import { Icon } from "../../../components/Icon";
-import {
-  Avatar,
-  AvatarContainer,
-  EditButton,
-  EditButtonContainer,
-} from "../styled";
+import { EditButton } from "../../../components/Buttons/EditButton";
+import { Avatar, AvatarContainer } from "../styled";
 
 export function ProfileImage({ avatar, userName, openAvatarModal }) {
   return (
@@ -13,11 +8,13 @@ export function ProfileImage({ avatar, userName, openAvatarModal }) {
         src={avatar}
         alt={`${userName}'s avatar`}
       />
-      <EditButtonContainer>
-        <EditButton onClick={openAvatarModal}>
-          <Icon id="edit-icon" /> Edit avatar
+      <div>
+        <EditButton
+          buttonTitle="Edit avatar"
+          onClick={openAvatarModal}>
+          Edit avatar
         </EditButton>
-      </EditButtonContainer>
+      </div>
     </AvatarContainer>
   );
 }

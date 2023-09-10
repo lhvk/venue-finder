@@ -32,7 +32,11 @@ export function LoginForm({ handleSubmit, register, errors }) {
           )}
         </div>
         <FormFooter>
-          <Button type="submit">Login</Button>
+          <Button
+            type="submit"
+            $maxWidth="100%">
+            Login
+          </Button>
           <span>
             Not a user?{" "}
             <RegisterLink to="/register">Register here</RegisterLink>

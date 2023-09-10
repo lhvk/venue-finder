@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import image from "../../assets/cottage200kb.jpg";
+import { MOBILE } from "../../config";
 
 export const HeroBanner = styled.div`
   background-image: url(${image});
@@ -27,7 +28,8 @@ export const HeroBanner = styled.div`
     align-items: center;
     text-align: center;
     gap: 8px;
-    padding: 10px;
+    margin-inline: 10px;
+    max-width: 480px;
     width: 100%;
   }
 `;
@@ -40,6 +42,10 @@ export const HeroLogo = styled.div`
   h1 {
     font-size: 6.2rem;
     line-height: 1;
+
+    @media (${MOBILE}) {
+      font-size: 4.2rem;
+    }
   }
   .half-text {
     color: var(--clr-pink);
@@ -49,6 +55,10 @@ export const HeroLogo = styled.div`
     font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
+
+    @media (${MOBILE}) {
+      font-size: 1.4rem;
+    }
   }
 `;
 

@@ -64,3 +64,15 @@ export const Line = styled.hr`
   border-width: 0.5px;
   opacity: 0.2;
 `;
+
+export const VenueTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const EditVenueContainer = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+`;

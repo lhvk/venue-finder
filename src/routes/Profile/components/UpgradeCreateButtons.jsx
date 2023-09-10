@@ -2,7 +2,7 @@ import { Button, ButtonNavLink } from "../../../components/Buttons";
 
 export function UpgradeCreateButtons({ venueManager, openManagerModal }) {
   return (
-    <>
+    <div>
       {venueManager ? (
         <ButtonNavLink to="/create-venue">Create venue</ButtonNavLink>
       ) : (
@@ -11,6 +11,6 @@ export function UpgradeCreateButtons({ venueManager, openManagerModal }) {
           <Button onClick={openManagerModal}>Upgrade</Button>
         </>
       )}
-    </>
+    </div>
   );
 }

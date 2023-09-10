@@ -24,6 +24,7 @@ export default function Register() {
       if (!response.ok)
         throw new Error(`Something went wrong: ${response.status} `);
       resetForm();
+      window.alert("User successfully createed! You can now login");
       navigate("/login");
     } catch (err) {
       console.error(err);

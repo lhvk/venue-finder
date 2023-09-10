@@ -1,10 +1,10 @@
-import { ProfileInfo } from "../styled";
+import { Email, ProfileInfo } from "../styled";
 
 export function ProfileInformation({ userName, email, venueManager }) {
   return (
     <ProfileInfo>
       <h1>{userName}</h1>
-      <p>{email}</p>
+      <Email>{email}</Email>
       <p>Current plan: {venueManager ? "Venue Manager" : "Customer"}</p>
     </ProfileInfo>
   );
