@@ -8,6 +8,7 @@ import Venue from "./Venue";
 import RouteNotFound from "./RouteNotFound";
 import CreateVenue from "./CreateVenue";
 import EditVenue from "./EditVenue";
+import Forbidden from "./Forbidden";
 
 export default function ApplicationRouter() {
   return (
@@ -42,6 +43,10 @@ export default function ApplicationRouter() {
         <Route
           path="/login"
           element={<Login />}
+        />
+        <Route
+          path="/forbidden"
+          element={<Forbidden />}
         />
         <Route
           path="*"

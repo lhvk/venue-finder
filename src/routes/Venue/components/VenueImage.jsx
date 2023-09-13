@@ -8,34 +8,55 @@ import {
 } from "../styled";
 import { Icon } from "../../../components/Icon";
 import { Button } from "../../../components/Buttons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "../../../components/Modal";
 import { BookVenueForm } from "../../../forms/BookVenueForm";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { getLocalStorageItem } from "../../../utils/localStorageUtils";
-import { bookingSchema } from "../../../schemas";
+import { getBookingSchema } from "../../../schemas";
 
 export function VenueImage({ venue }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [date, setDate] = useState({
-    range: undefined,
+    dateFrom: null,
+    dateTo: null,
   });
-  const { accessToken } = getLocalStorageItem("user");
 
-  let schema = bookingSchema;
+  const user = getLocalStorageItem("user");
+
+  const { accessToken, name } = user || {};
+
+  const canEditVenue = name === venue.owner?.name;
 
   const {
     register,
     handleSubmit,
+    setValue,
     reset: resetForm,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(getBookingSchema(venue, date.dateFrom, date.dateTo)),
     defaultValues: {
-      id: venue.id,
+      venueId: venue.id,
+      dateFrom: date.dateFrom,
+      dateTo: date.dateTo,
     },
   });
+
+  useEffect(() => {
+    // Set the values in the form when date changes
+    setValue("dateFrom", date.dateFrom);
+    setValue("dateTo", date.dateTo);
+  }, [date, setValue]);
+
+  const onSubmit = (formData) => {
+    formData.dateFrom = formData.dateFrom.toISOString();
+    formData.dateTo = formData.dateTo.toISOString();
+
+    console.log("formData", formData);
+    // Add your form submission logic here
+  };
 
   const closeModal = () => setIsModalOpen(false);
   const openModal = () => setIsModalOpen(true);
@@ -49,12 +70,14 @@ export function VenueImage({ venue }) {
         />
         <VenueTitle>
           <h1>{venue.name}</h1>
-          <NavLink to={`/edit-venue/${venue.id}`}>
-            <EditVenueContainer>
-              <Icon id="edit-icon" />
-              Edit venue
-            </EditVenueContainer>
-          </NavLink>
+          {canEditVenue && (
+            <NavLink to={`/edit-venue/${venue.id}`}>
+              <EditVenueContainer>
+                <Icon id="edit-icon" />
+                Edit venue
+              </EditVenueContainer>
+            </NavLink>
+          )}
         </VenueTitle>
         <h2>Description:</h2>
         <article>{venue.description}</article>
@@ -63,13 +86,19 @@ export function VenueImage({ venue }) {
       {isModalOpen && (
         <Modal
           closeModal={closeModal}
+          handleUpload={handleSubmit(onSubmit)}
           modalTitle="Book venue"
+          buttonType="submit"
+          formId="book-venue-form"
           children={
             <>
               <BookVenueForm
                 register={register}
-                handleSubmit={handleSubmit}
+                onSubmit={handleSubmit(onSubmit)}
                 errors={errors}
+                setDate={setDate}
+                date={date}
+                venue={venue}
               />
             </>
           }

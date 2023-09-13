@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { VenueForm as EditVenueForm } from "../../forms/VenueForm";
 import { getLocalStorageItem } from "../../utils/localStorageUtils";
 import { createVenueSchema } from "../../schemas";
@@ -13,7 +13,8 @@ import { Button } from "../../components/Buttons";
 
 export default function EditVenue() {
   const navigate = useNavigate();
-  const { accessToken } = getLocalStorageItem("user");
+  const user = getLocalStorageItem("user");
+  const { accessToken, venueManager } = user || {};
   const { id } = useParams();
   const { data: venue, isLoading, isError } = useFetch(`${VENUE_URL}/${id}`);
 
@@ -38,6 +39,8 @@ export default function EditVenue() {
     }
   }, [isLoading, isError, venue, setValue]);
 
+  if (!user || !venueManager) return <Navigate to="/forbidden" />;
+
   if (isLoading) {
     return <Loader message={"venue"} />;
   }
@@ -54,7 +57,6 @@ export default function EditVenue() {
         throw new Error(`Something went wrong: ${response.status} `);
 
       const updatedVenue = await response.json();
-      console.log("data", updatedVenue);
 
       resetForm();
       navigate(`/venue/${updatedVenue.id}`);

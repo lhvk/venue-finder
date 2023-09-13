@@ -1,63 +1,96 @@
-import { Form } from "react-router-dom";
-import {
-  ErrorMessage,
-  FormBody,
-  FormContainer,
-  FormFooter,
-  Input,
-  Label,
-} from "../styled";
 import { DatePicker } from "@mui/x-date-pickers";
-import { Button } from "../../components/Buttons";
+import { ErrorMessage, FormBody, FormContainer, Input, Form } from "../styled";
+import { TextField } from "@mui/material";
+import { endOfDay, startOfDay } from "date-fns";
 
-export function BookVenueForm({ handleSubmit, register, errors, venue }) {
+export function BookVenueForm({
+  onSubmit,
+  register,
+  errors,
+  date,
+  setDate,
+  venue,
+}) {
+  function disableBookedDates(date) {
+    if (venue.bookings.length === 0) return false;
+
+    for (const booking of venue.bookings) {
+      const startDate = startOfDay(new Date(booking.dateFrom));
+      const endDate = endOfDay(new Date(booking.dateTo));
+
+      if (date >= startDate && date <= endDate) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   return (
     <FormContainer>
-      <Form onSubmit={handleSubmit}>
+      <Form
+        onSubmit={onSubmit}
+        id="book-venue-form">
         <FormBody>
           <div>
-            <Label htmlFor="dateFrom">Check-in Date</Label>
-            {/* <DatePicker
-              type="date"
-              id="dateFrom"
-              {...register("dateFrom", {
-                required: "Check-in date is required",
+            <Input
+              type="hidden"
+              id="venueId"
+              {...register("venueId", {
+                required: "Venue ID is required",
               })}
-            /> */}
+            />
+          </div>
+          <div>
+            <DatePicker
+              disablePast
+              label="Check-in date"
+              id="dateFrom"
+              onChange={(value) => {
+                setDate({ ...date, dateFrom: value });
+              }}
+              sx={{ width: "100%" }}
+              shouldDisableDate={(date) => disableBookedDates(date)}
+            />
+
             {errors.dateFrom && (
               <ErrorMessage>{errors.dateFrom.message}</ErrorMessage>
             )}
           </div>
           <div>
-            <Label htmlFor="dateTo">Check-out Date</Label>
-            {/* <DatePicker
-              type="date"
+            <DatePicker
+              disablePast
+              label="Check-out date"
               id="dateTo"
-              {...register("dateTo", {
-                required: "Check-out date is required",
-              })}
-            /> */}
+              value={date.dateTo}
+              onChange={(value) => {
+                setDate({ ...date, dateTo: value });
+              }}
+              sx={{
+                width: "100%",
+              }}
+              shouldDisableDate={(date) => disableBookedDates(date)}
+            />
+
             {errors.dateTo && (
               <ErrorMessage>{errors.dateTo.message}</ErrorMessage>
             )}
           </div>
           <div>
-            <Label htmlFor="guests">Number of Guests</Label>
-            <Input
+            <TextField
+              label="Number of guests"
               type="number"
               id="guests"
               {...register("guests", {
                 required: "Number of guests is required",
               })}
+              sx={{ width: "100%" }}
             />
             {errors.guests && (
               <ErrorMessage>{errors.guests.message}</ErrorMessage>
             )}
           </div>
         </FormBody>
-        <FormFooter>
-          <Button type="submit">Book</Button>
-        </FormFooter>
       </Form>
     </FormContainer>
   );

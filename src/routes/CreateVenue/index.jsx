@@ -4,14 +4,15 @@ import { useForm } from "react-hook-form";
 import { VENUE_URL, POST } from "../../config";
 import { fetchOptions } from "../../api";
 import { VenueForm as CreateVenueForm } from "../../forms/VenueForm";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { getLocalStorageItem } from "../../utils/localStorageUtils";
 import { createVenueDefaultValues } from "../../schemas/createVenueDefaultValues";
 import { Button } from "../../components/Buttons";
 
 export default function CreateVenue() {
   const navigate = useNavigate();
-  const { accessToken } = getLocalStorageItem("user");
+  const user = getLocalStorageItem("user");
+  const { accessToken, venueManager } = user || {};
 
   let schema = createVenueSchema;
 
@@ -24,6 +25,8 @@ export default function CreateVenue() {
     resolver: yupResolver(schema),
     defaultValues: createVenueDefaultValues,
   });
+
+  if (!user || !venueManager) return <Navigate to="/forbidden" />;
 
   const onSubmit = async (formData) => {
     try {

@@ -12,7 +12,9 @@ import {
 export function LoginForm({ handleSubmit, register, errors }) {
   return (
     <FormContainer>
-      <Form onSubmit={handleSubmit}>
+      <Form
+        onSubmit={handleSubmit}
+        $width="300px;">
         <div>
           <Label>Email</Label>
           <Input

@@ -19,7 +19,11 @@ import {
 
 export default function Venue() {
   const { id } = useParams();
-  const { data: venue, isLoading, isError } = useFetch(`${VENUE_URL}/${id}`);
+  const {
+    data: venue,
+    isLoading,
+    isError,
+  } = useFetch(`${VENUE_URL}/${id}?_bookings=true&_owner=true`);
 
   if (isLoading) {
     return <Loader message={"venue"} />;

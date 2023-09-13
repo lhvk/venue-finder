@@ -19,6 +19,9 @@
   --font-main: "Roboto", sans-serif;
   --font-heading: "Raleway", serif;
   --clr-font-heading: var(--clr-pink);
+
+  /* Gradients */
+  --gradient-primary: "linear-gradient(var(--clr-pink), var(--clr-primary))";
 }
 
 *,

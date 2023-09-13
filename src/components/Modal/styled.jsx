@@ -6,6 +6,9 @@ export const Overlay = styled.div`
   align-items: center;
   position: absolute;
   top: 0;
+  let: 0;
+  right: 0;
+  bottom: 0;
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
@@ -18,6 +21,7 @@ export const ModalContainer = styled.div`
   overflow: hidden;
   width: 100%;
   border-radius: 8px;
+  z-index: 2;
 `;
 
 export const ModalHeader = styled.div`

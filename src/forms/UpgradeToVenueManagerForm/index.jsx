@@ -1,6 +1,6 @@
+import { Switch } from "@mui/material";
 import {
   Form,
-  CheckBox,
   FormBody,
   FormContainer,
   Label,
@@ -16,8 +16,7 @@ export function UpgradeToVenueManagerForm({ onSubmit, register }) {
         <FormBody>
           <VenueManagerContainer>
             <Label htmlFor="venueManager">Venue Manager?</Label>
-            <CheckBox
-              type="checkbox"
+            <Switch
               id="venueManager"
               {...register("venueManager")}
             />

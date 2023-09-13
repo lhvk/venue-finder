@@ -17,6 +17,7 @@ import {
   UserVenues,
 } from "./components";
 import { handleProfileFormSubmit } from "../../handlers";
+import { Navigate } from "react-router-dom";
 
 export default function Profile() {
   const profileInfo = getLocalStorageItem("user");
@@ -34,7 +35,7 @@ export default function Profile() {
     avatar,
     accessToken: token,
     venueManager,
-  } = profileInfo;
+  } = profileInfo || {};
 
   const isVenueManager = venueManager;
 
@@ -74,6 +75,8 @@ export default function Profile() {
     );
   };
 
+  if (!profileInfo) return <Navigate to="/forbidden" />;
+
   if (!data && isLoading) return <Loader message={"your venues"} />;
 
   if (isError) return <p>Something went wrong..</p>;
@@ -111,7 +114,7 @@ export default function Profile() {
       {isAvatarModalOpen && (
         <Modal
           handleUpload={handleSubmit(onSubmit)}
-          isModalOpen={isAvatarModalOpen}
+          // isModalOpen={isAvatarModalOpen}
           closeModal={closeAvatarModal}
           modalTitle="Edit avatar"
           buttonType="submit"
@@ -127,7 +130,7 @@ export default function Profile() {
       {isManagerModalOpen && (
         <Modal
           handleUpload={handleSubmit(onSubmit)}
-          isModalOpen={isManagerModalOpen}
+          // isModalOpen={isManagerModalOpen}
           closeModal={closeManagerModal}
           modalTitle="Upgrade to Venue Manager"
           buttonType="submit"

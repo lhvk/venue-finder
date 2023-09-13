@@ -1,6 +1,6 @@
+import { Switch } from "@mui/material";
 import { Button } from "../../components/Buttons";
 import {
-  CheckBox,
   ErrorMessage,
   Form,
   FormBody,
@@ -16,6 +16,7 @@ export function RegistrationForm({ handleSubmit, register, errors }) {
   return (
     <FormContainer>
       <Form
+        $width="300px;"
         $gap="20px"
         onSubmit={handleSubmit}>
         <FormBody>
@@ -63,8 +64,7 @@ export function RegistrationForm({ handleSubmit, register, errors }) {
           </div>
           <VenueManagerContainer>
             <Label htmlFor="venueManager">Venue Manager?</Label>
-            <CheckBox
-              type="checkbox"
+            <Switch
               id="venueManager"
               {...register("venueManager")}
             />

@@ -74,45 +74,46 @@ export const createVenueSchema = yup.object().shape({
   location: venueLocationYup,
 });
 
-export const bookingSchema = yup.object().shape({
-  dateFrom: yup
-    .date()
-    .required("Date From is required")
-    .typeError("Date From must be a valid date"),
-  dateTo: yup
-    .date()
-    .required("Date To is required")
-    .typeError("Date To must be a valid date")
-    .min(yup.ref("dateFrom"), "Date To must be after Date From"),
-  guests: yup
-    .number()
-    .required("Number of guests is required")
-    .positive("Number of guests must be positive")
-    .integer("Number of guests must be an integer")
-    .typeError("Number of guests must be a valid number"),
-  venueId: yup.string().required("Venue ID is required"),
-});
-
-// export const createVenueSchema = yup.object().shape({
-//   name: yup.string().required("Name is required"),
-//   description: yup.string().required("Description is required"),
-//   media: yup.array().of(yup.string()).ensure().cast(null),
-//   price: yup.number().positive().required("Price is required"),
-//   maxGuests: yup.number().positive().required("Max Guests is required"),
-//   rating: yup.number().min(0).default(0),
-//   meta: yup.object().shape({
-//     wifi: yup.boolean().default(false),
-//     parking: yup.boolean().default(false),
-//     breakfast: yup.boolean().default(false),
-//     pets: yup.boolean().default(false),
-//   }),
-//   location: yup.object().shape({
-//     address: yup.string().default("Unknown"),
-//     city: yup.string().default("Unknown"),
-//     zip: yup.string().default("Unknown"),
-//     country: yup.string().default("Unknown"),
-//     continent: yup.string().default("Unknown"),
-//     lat: yup.number().default(0),
-//     lng: yup.number().default(0),
-//   }),
-// });
+export function getBookingSchema(venue) {
+  const bookingSchema = yup.object().shape({
+    dateFrom: yup
+      .date()
+      .required("Check-in date is required")
+      .typeError("Check-in date must be a valid date")
+      .test(
+        "fromDateBeforeToDate",
+        "Check-in date must be before Check-out date",
+        (dateFrom, context) => {
+          const dateTo = context.parent.dateTo;
+          return !dateFrom || !dateTo || dateFrom < dateTo;
+        }
+      ),
+    dateTo: yup
+      .date()
+      .required("Check-out date is required")
+      .typeError("Check-out date must be a valid date")
+      .test(
+        "fromDateBeforeToDate",
+        "Check-out date must be after Check-in date",
+        (dateTo, context) => {
+          const dateFrom = context.parent.dateFrom;
+          return !dateFrom || !dateTo || dateTo > dateFrom;
+        }
+      ),
+    guests: yup
+      .number()
+      .required("Number of guests is required")
+      .positive("Number of guests must be positive")
+      .integer("Number of guests must be an integer")
+      .typeError("Number of guests must be a valid number")
+      .test(
+        "maxGuests",
+        "Number of guests exceeds the maximum allowed",
+        (value) => {
+          return value <= venue.maxGuests;
+        }
+      ),
+    venueId: yup.string().required("Venue ID is required"),
+  });
+  return bookingSchema;
+}

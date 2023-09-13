@@ -26,8 +26,8 @@ export function Modal({
   closeModal,
   children,
   modalTitle,
-  buttonType,
-  formId,
+  buttonType = undefined,
+  formId = undefined,
   infoOnly = false,
 }) {
   return (

@@ -11,10 +11,10 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.$gap || "10px"};
-  max-width: 400px;
   padding-block: 20px;
   border: 1px solid var(--clr-white);
   border-radius: 5px;
+  width: ${(props) => props.$width || "100%"};
 `;
 
 export const Label = styled.label`
@@ -58,6 +58,7 @@ export const CheckBox = styled.input`
 
 export const VenueManagerContainer = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
 `;

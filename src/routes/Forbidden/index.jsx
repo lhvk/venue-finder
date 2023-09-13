@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom";
 
-export default function RouteNotFound() {
+export default function Forbidden() {
   return (
     <main
       style={{
         textAlign: "center",
       }}>
-      <h1>Route not found</h1>
-
+      <h1>Forbidden: </h1>
+      <h2>You are not authorized to view this page</h2>
       <p>
         Take me{" "}
         <NavLink

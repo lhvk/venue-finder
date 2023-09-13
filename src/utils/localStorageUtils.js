@@ -16,6 +16,7 @@ export const setLocalStorageItem = (key, value) => {
  * @returns {*} The value associated with the provided key, or null if not found.
  */
 export const getLocalStorageItem = (key) => {
+  if (!key) return;
   const item = localStorage.getItem(key);
   return item ? JSON.parse(item) : null;
 };

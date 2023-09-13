@@ -13,9 +13,6 @@ export async function handleProfileFormSubmit(
   const updateAvatarURL = `${PROFILE_URL}/${userName}/${MEDIA}`;
   const upgradeToManagerURL = `${PROFILE_URL}/${userName}`;
 
-  console.log(formData);
-  console.log(upgradeToManagerURL);
-
   try {
     const response = await fetch(
       formData.avatar ? updateAvatarURL : upgradeToManagerURL,
