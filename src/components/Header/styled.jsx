@@ -41,18 +41,6 @@ export const HoverNavLink = styled(NavLink)`
   }
 `;
 
-export const LogoLink = styled(HoverNavLink)`
-  color: ${(props) =>
-    props.$isHomePage ? "var(--clr-white)" : "var(--clr-secondary)"};
-  display: flex;
-  gap: 10px;
-  align-items: center;
-
-  .half-text {
-    color: var(--clr-pink);
-  }
-`;
-
 export const ProfileLink = styled(HoverNavLink)`
   display: flex;
   align-items: center;

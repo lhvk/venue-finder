@@ -6,10 +6,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useFetch } from "../../hooks/useFetch";
 import { Loader } from "../../components/Loader";
-import { PUT, VENUE_URL } from "../../config";
-import { fetchOptions } from "../../api";
+import { VENUE_URL } from "../../config";
 import { useEffect } from "react";
-import { Button } from "../../components/Buttons";
+import { Main } from "../../components/Main";
+import { PageHeader } from "../../components/PageHeader";
+import { handleEditVenue } from "../../handlers/handleEditVenue";
 
 export default function EditVenue() {
   const navigate = useNavigate();
@@ -47,39 +48,18 @@ export default function EditVenue() {
 
   if (isError) return <p>an error occured..</p>;
 
-  const onSubmit = async (formData) => {
-    try {
-      const response = await fetch(
-        `${VENUE_URL}/${id}`,
-        fetchOptions(formData, PUT, accessToken)
-      );
-      if (!response.ok)
-        throw new Error(`Something went wrong: ${response.status} `);
-
-      const updatedVenue = await response.json();
-
-      resetForm();
-      navigate(`/venue/${updatedVenue.id}`);
-    } catch (err) {
-      console.error(err);
-    }
+  const onSubmit = (formData) => {
+    handleEditVenue(formData, id, resetForm, navigate, accessToken);
   };
+
   return (
-    <>
-      <Button onClick={() => navigate(-1)}>Back</Button>
-      <main
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}>
-        <h1>Edit Venue</h1>
-        <EditVenueForm
-          register={register}
-          handleSubmit={handleSubmit(onSubmit)}
-          errors={errors}
-        />
-      </main>
-    </>
+    <Main>
+      <PageHeader pageTitle="Edit venue" />
+      <EditVenueForm
+        register={register}
+        handleSubmit={handleSubmit(onSubmit)}
+        errors={errors}
+      />
+    </Main>
   );
 }

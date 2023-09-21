@@ -1,11 +1,11 @@
 import { Button } from "../Buttons";
-import { Icon } from "../Icon";
 import {
   Overlay,
   ModalContainer,
   ModalHeader,
   ModalBody,
   ModalFooter,
+  CloseButton,
 } from "./styled";
 
 /**
@@ -22,7 +22,6 @@ import {
  */
 
 export function Modal({
-  handleUpload,
   closeModal,
   children,
   modalTitle,
@@ -35,22 +34,13 @@ export function Modal({
       <ModalContainer>
         <ModalHeader>
           <h2>{modalTitle}</h2>
-          <button
-            className="closeModalBtn"
-            onClick={closeModal}>
-            <Icon
-              id="x-close-icon"
-              height="20px"
-              width="20px"
-            />
-          </button>
+          <CloseButton onClick={closeModal}>&times;</CloseButton>
         </ModalHeader>
         <ModalBody>{children}</ModalBody>
         {!infoOnly && (
           <ModalFooter>
             <Button onClick={closeModal}>Cancel</Button>
             <Button
-              onClick={() => handleUpload()}
               type={buttonType}
               form={formId}>
               OK

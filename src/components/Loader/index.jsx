@@ -8,7 +8,8 @@ export function Loader({ message = undefined }) {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        gap: "40px",
+        gap: "20px",
+        margin: "20px",
       }}>
       <LoadingAnimation
         type="ball-grid-pulse"

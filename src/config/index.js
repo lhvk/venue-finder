@@ -21,7 +21,7 @@ export const REGISTER_URL = `${BASE_URL}/${AUTH}/${REGISTER}`;
 export const LOGIN_URL = `${BASE_URL}/${AUTH}/${LOGIN}`;
 export const PROFILE_URL = `${BASE_URL}/${PROFILES}`;
 export const VENUE_URL = `${BASE_URL}/${VENUES}`;
-export const BOOK_VENUE_URL = `${BASE_URL}/${BOOKINGS}`;
+export const BOOKINGS_URL = `${BASE_URL}/${BOOKINGS}`;
 
 // Fetch methods
 export const POST = "POST";

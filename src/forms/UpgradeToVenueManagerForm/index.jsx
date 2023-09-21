@@ -11,6 +11,7 @@ export function UpgradeToVenueManagerForm({ onSubmit, register }) {
   return (
     <FormContainer>
       <Form
+        id="upgrade-to-manager-form"
         $gap="20px"
         onSubmit={onSubmit}>
         <FormBody>

@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 
 export const Container = styled.div`
   height: 400px;
-  width: 330px;
+  max-width: 673px;
   position: relative;
   background-image: linear-gradient(
       rgba(0, 0, 0, 0) 30%,
@@ -55,17 +55,6 @@ export const TagContainer = styled.div`
 
 export const ButtonContainer = styled.div`
   color: var(--clr-white);
-`;
-
-export const ReviewsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 10px;
-  color: rgba(255, 255, 255, 50);
-
-  & .total-reviews {
-    margin-left: 8px;
-  }
 `;
 
 export const CardVenueLink = styled(NavLink)`

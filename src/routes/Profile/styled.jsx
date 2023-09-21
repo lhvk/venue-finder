@@ -16,7 +16,7 @@ export const ProfileContainer = styled.section`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 10px;
   justify-content: center;
 
   @media (${MOBILE}) {

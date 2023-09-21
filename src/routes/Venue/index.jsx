@@ -16,6 +16,7 @@ import {
   VenueDateTimeInfo,
   VenueImage,
 } from "./components";
+import { getLocalStorageItem } from "../../utils/localStorageUtils";
 
 export default function Venue() {
   const { id } = useParams();
@@ -24,6 +25,10 @@ export default function Venue() {
     isLoading,
     isError,
   } = useFetch(`${VENUE_URL}/${id}?_bookings=true&_owner=true`);
+
+  const user = getLocalStorageItem("user");
+
+  const { accessToken, name, venueManager: isVenueManager } = user || {};
 
   if (isLoading) {
     return <Loader message={"venue"} />;

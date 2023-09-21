@@ -4,6 +4,7 @@ export function EditAvatarForm({ onSubmit, register, errors }) {
   return (
     <>
       <Form
+        id="edit-avatar-form"
         $gap="20px"
         onSubmit={onSubmit}>
         <FormBody>

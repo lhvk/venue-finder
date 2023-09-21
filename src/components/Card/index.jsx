@@ -48,9 +48,10 @@ export function Card({
             </>
           )}
           <CardFooter>
-            <ReviewsContainer>
-              {StarRating(totalReviews, ratingAverage)}
-            </ReviewsContainer>
+            <StarRating
+              totalReviews={totalReviews}
+              ratingAverage={ratingAverage}
+            />
             <ButtonContainer>
               <CardVenueLink
                 $py="5px"

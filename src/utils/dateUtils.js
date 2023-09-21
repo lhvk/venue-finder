@@ -5,8 +5,16 @@ import {
   format,
 } from "date-fns";
 
-export function formatDate(date) {
-  return format(new Date(date), "dd-MM-yyyy");
+/**
+ * Formats a date into a string using the specified date format.
+ *
+ * @param {Date|string} date - The date to be formatted, either a Date object or a valid date string.
+ * @param {string} [dateFormat="dd/MM/yyyy"] - The format for the output date string. Default is "dd/MM/yyyy".
+ * @returns {string} The formatted date string.
+ */
+
+export function formatDate(date, dateFormat) {
+  return format(new Date(date), dateFormat || "dd/MM/yyyy");
 }
 
 export function getRelativeTime(date) {

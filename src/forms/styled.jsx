@@ -49,6 +49,7 @@ export const FormFooter = styled.div`
 `;
 
 export const RegisterLink = styled(NavLink)`
+  color: var(--clr-secondary);
   text-decoration: underline;
 `;
 

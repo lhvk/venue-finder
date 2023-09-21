@@ -22,7 +22,7 @@ export default function Login() {
       const response = await fetch(LOGIN_URL, fetchOptions(data, POST));
       const userData = await response.json();
       if (!response.ok)
-        throw new Error(`Something went wrong ${response.status}`);
+        throw new Error(`Something went wrong: ${response.status}`);
 
       navigate("/profile");
       return setLocalStorageItem("user", userData);
@@ -31,6 +31,7 @@ export default function Login() {
       throw error;
     }
   }
+
   return (
     <main>
       <h1 style={{ textAlign: "center" }}>Login</h1>

@@ -1,7 +1,7 @@
 import { Modal } from "../../components/Modal";
 import { getLocalStorageItem } from "../../utils/localStorageUtils";
 import { useEffect, useState } from "react";
-import { PROFILE_URL, VENUES } from "../../config";
+import { PROFILE_URL } from "../../config";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { editAvatarSchema } from "../../schemas";
@@ -23,7 +23,7 @@ export default function Profile() {
   const profileInfo = getLocalStorageItem("user");
   const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
   const [isManagerModalOpen, setIsManagerModalOpen] = useState(false);
-  const [venueData, setVenueData] = useState([]);
+  const [userData, setUserData] = useState();
   const closeAvatarModal = () => setIsAvatarModalOpen(false);
   const openAvatarModal = () => setIsAvatarModalOpen(true);
   const closeManagerModal = () => setIsManagerModalOpen(false);
@@ -40,14 +40,16 @@ export default function Profile() {
   const isVenueManager = venueManager;
 
   const { data, isError, isLoading } = useFetch(
-    `${PROFILE_URL}/${userName}/${VENUES}?_bookings=true`,
+    `${PROFILE_URL}/${userName}${
+      isVenueManager ? "?_venues=true&_bookings=true" : "?_bookings=true"
+    }`,
     null,
     token
   );
 
   useEffect(() => {
     if (!isLoading && !isError) {
-      setVenueData(data);
+      setUserData(data);
     }
   }, [data, isLoading, isError]);
 
@@ -103,9 +105,8 @@ export default function Profile() {
         </Column>
         <Column>
           <UserVenues
-            venueData={venueData}
-            setVenueData={setVenueData}
-            token={token}
+            userData={userData}
+            setUserData={setUserData}
             isVenueManager={isVenueManager}
           />
         </Column>
@@ -113,9 +114,8 @@ export default function Profile() {
 
       {isAvatarModalOpen && (
         <Modal
-          handleUpload={handleSubmit(onSubmit)}
-          // isModalOpen={isAvatarModalOpen}
           closeModal={closeAvatarModal}
+          formId="edit-avatar-form"
           modalTitle="Edit avatar"
           buttonType="submit"
           children={
@@ -129,9 +129,8 @@ export default function Profile() {
       )}
       {isManagerModalOpen && (
         <Modal
-          handleUpload={handleSubmit(onSubmit)}
-          // isModalOpen={isManagerModalOpen}
           closeModal={closeManagerModal}
+          formId="upgrade-to-manager-form"
           modalTitle="Upgrade to Venue Manager"
           buttonType="submit"
           children={

@@ -1,6 +1,7 @@
 import { Icon } from "../Icon";
+import { ReviewsContainer } from "./styled";
 
-export function StarRating(ratingAverage, totalReviews) {
+export function StarRating({ ratingAverage, totalReviews, textColor }) {
   const StarEmpty = () => (
     <div>
       <Icon
@@ -29,7 +30,7 @@ export function StarRating(ratingAverage, totalReviews) {
   );
 
   return (
-    <>
+    <ReviewsContainer $textColor={textColor}>
       {ratingAverage === 0 && (
         <>
           <StarEmpty />
@@ -133,6 +134,6 @@ export function StarRating(ratingAverage, totalReviews) {
       <span className="total-reviews">
         {`${totalReviews === 1 ? "1 review" : `${totalReviews} reviews`}`}
       </span>
-    </>
+    </ReviewsContainer>
   );
 }

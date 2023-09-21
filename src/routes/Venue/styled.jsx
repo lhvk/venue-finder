@@ -9,7 +9,6 @@ export const VenueMain = styled.div`
 export const VenueContainer = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
   max-width: 1200px;
 `;
@@ -75,4 +74,9 @@ export const EditVenueContainer = styled.div`
   display: flex;
   align-items: center;
   font-size: 1.2rem;
+`;
+
+export const VenueLocation = styled.div`
+  display: flex;
+  align-items: center;
 `;

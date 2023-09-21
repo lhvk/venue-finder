@@ -7,7 +7,8 @@ import { VenueForm as CreateVenueForm } from "../../forms/VenueForm";
 import { Navigate, useNavigate } from "react-router-dom";
 import { getLocalStorageItem } from "../../utils/localStorageUtils";
 import { createVenueDefaultValues } from "../../schemas/createVenueDefaultValues";
-import { Button } from "../../components/Buttons";
+import { PageHeader } from "../../components/PageHeader";
+import { Main } from "../../components/Main";
 
 export default function CreateVenue() {
   const navigate = useNavigate();
@@ -47,23 +48,13 @@ export default function CreateVenue() {
   };
 
   return (
-    <>
-      <div>
-        <Button onClick={() => navigate(-1)}>Back</Button>
-      </div>
-      <main
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}>
-        <h1>Create venue</h1>
-        <CreateVenueForm
-          register={register}
-          handleSubmit={handleSubmit(onSubmit)}
-          errors={errors}
-        />
-      </main>
-    </>
+    <Main>
+      <PageHeader pageTitle="Create venue" />
+      <CreateVenueForm
+        register={register}
+        handleSubmit={handleSubmit(onSubmit)}
+        errors={errors}
+      />
+    </Main>
   );
 }

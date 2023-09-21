@@ -7,13 +7,14 @@
 :root {
   /* Colors */
   --clr-primary: #ff4b2b;
-  --clr-secondary: #1d5b79;
+  --clr-secondary: #5347a0;
   --clr-white: #fff;
   --clr-green: #008000;
   --clr-red: #ff0f0f;
   --clr-dark: #333;
   --clr-grey: #f0f0f0;
   --clr-pink: #ff416c;
+  --clr-purple-lighter: #958ab6;
 
   /* Fonts */
   --font-main: "Roboto", sans-serif;
@@ -21,7 +22,16 @@
   --clr-font-heading: var(--clr-pink);
 
   /* Gradients */
-  --gradient-primary: "linear-gradient(var(--clr-pink), var(--clr-primary))";
+  --gradient-primary: linear-gradient(
+    90deg,
+    var(--clr-pink),
+    var(--clr-primary)
+  );
+  --gradient-secondary: linear-gradient(
+    90deg,
+    var(--clr-secondary),
+    var(--clr-purple-lighter)
+  );
 }
 
 *,
@@ -64,6 +74,14 @@ li {
 
 input {
   font-size: 1.6rem;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  background: var(--gradient-secondary);
 }
 
 /* NavLinks active class */

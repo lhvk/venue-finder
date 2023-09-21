@@ -1,33 +1,34 @@
 import { toast } from "react-toastify";
 import { fetchOptions } from "../../api";
-import { BOOKINGS_URL, POST } from "../../config";
+import { PUT, VENUE_URL } from "../../config";
 
-export async function handleBookVenueFormSubmit(
+export const handleEditVenue = async (
   formData,
-  token,
+  id,
   resetForm,
-  closeModal
-) {
+  navigate,
+  accessToken
+) => {
   try {
     const response = await fetch(
-      BOOKINGS_URL,
-      fetchOptions(formData, POST, token)
+      `${VENUE_URL}/${id}`,
+      fetchOptions(formData, PUT, accessToken)
     );
-
-    if (!response.ok) {
+    if (!response.ok)
       throw new Error(`Something went wrong: ${response.status} `);
-    }
 
-    closeModal();
+    const updatedVenue = await response.json();
+
     resetForm();
-    toast("Venue booked", {
+    toast("Venue edited", {
       position: "bottom-right",
       type: "success",
     });
+    navigate(`/venue/${updatedVenue.id}`);
   } catch (err) {
-    toast(`An error occured: ${err}`, {
+    toast(`Something went wrong: ${err}`, {
       position: "bottom-right",
       type: "error",
     });
   }
-}
+};

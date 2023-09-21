@@ -1,12 +1,13 @@
 import { styled } from "styled-components";
-import image from "../../assets/cottage200kb.jpg";
+import image from "../../assets/airborne.jpg";
 import { MOBILE } from "../../config";
 
 export const HeroBanner = styled.div`
   background-image: url(${image});
   background-size: cover;
-  background-position: center;
-  height: 80vh;
+  background-position: center center;
+  height: auto;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +18,8 @@ export const HeroBanner = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: auto;
+    min-height: 80vh;
     background-color: rgba(0, 0, 0, 0.5);
   }
 

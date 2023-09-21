@@ -16,7 +16,7 @@ export const Overlay = styled.div`
 
 export const ModalContainer = styled.div`
   background-color: var(--clr-white);
-  max-width: 320px;
+  max-width: 480px;
   max-height: 600px;
   overflow: hidden;
   width: 100%;
@@ -25,15 +25,24 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalHeader = styled.div`
+  word-break: break-word;
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding: 20px 16px;
+`;
 
-  & .closeModalBtn {
-    border: 0;
-    background-color: inherit;
-    cursor: pointer;
-  }
+export const CloseButton = styled.button`
+  color: var(--clr-dark);
+  font-size: 3.5rem;
+  position: absolute;
+  border: 0;
+  top: 0;
+  right: 0;
+  padding-inline: 11px;
+
+  background-color: inherit;
+  cursor: pointer;
 `;
 
 export const ModalBody = styled.div`
