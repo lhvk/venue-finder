@@ -3,7 +3,6 @@ import {
   Container,
   Content,
   ButtonContainer,
-  ReviewsContainer,
   Subtitle,
   TagContainer,
   Title,

@@ -4,13 +4,13 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
-  let: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 `;
 

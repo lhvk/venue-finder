@@ -5,19 +5,30 @@ export const ProfileMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
+  margin-bottom: 100px;
+`;
+
+export const AvatarContainer = styled.div`
+  max-width: 768px;
+  max-height: 768px;
+  border-radius: 10px;
 `;
 
 export const Avatar = styled.img`
   width: 100%;
-  border-radius: 8px;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
 `;
 
-export const ProfileContainer = styled.section`
+export const ProfileContainer = styled.div`
+  max-width: 768px;
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
 
   @media (${MOBILE}) {
     padding: 10px;
@@ -25,22 +36,25 @@ export const ProfileContainer = styled.section`
 `;
 
 export const ProfileInfo = styled.div`
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
 `;
 
-export const AvatarContainer = styled.div`
-  max-width: 400px;
-`;
-
-export const UserVenuesList = styled.li`
+export const UserVenuesListItem = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--clr-grey);
+`;
+
+export const UserVenuesList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 export const UserVenueThumbnail = styled.img`
   width: 100px;
+  height: 100%;
   object-fit: contain;
   border-radius: 8px;
 `;
@@ -56,11 +70,9 @@ export const Email = styled.p`
   color: #767676;
 `;
 
-export const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${(props) => props.$gap};
-  width: 540px;
+export const StyledSection = styled.section`
+  display: grid;
+  grid-template-columns: 1fr;
 `;
 
 export const Container = styled.div`

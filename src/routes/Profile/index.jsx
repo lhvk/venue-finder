@@ -5,7 +5,7 @@ import { PROFILE_URL } from "../../config";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { editAvatarSchema } from "../../schemas";
-import { ProfileContainer, ProfileMain, Column } from "./styled";
+import { ProfileContainer, ProfileMain, StyledSection } from "./styled";
 import { UpgradeToVenueManagerForm } from "../../forms/UpgradeToVenueManagerForm";
 import { EditAvatarForm } from "../../forms/EditAvatarForm";
 import { useFetch } from "../../hooks/useFetch";
@@ -18,16 +18,29 @@ import {
 } from "./components";
 import { handleProfileFormSubmit } from "../../handlers";
 import { Navigate } from "react-router-dom";
+import { Line } from "../../components/Line";
 
 export default function Profile() {
   const profileInfo = getLocalStorageItem("user");
   const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
   const [isManagerModalOpen, setIsManagerModalOpen] = useState(false);
   const [userData, setUserData] = useState();
-  const closeAvatarModal = () => setIsAvatarModalOpen(false);
-  const openAvatarModal = () => setIsAvatarModalOpen(true);
-  const closeManagerModal = () => setIsManagerModalOpen(false);
-  const openManagerModal = () => setIsManagerModalOpen(true);
+  const closeAvatarModal = () => {
+    setIsAvatarModalOpen(false);
+    document.body.style.overflow = "auto";
+  };
+  const openAvatarModal = () => {
+    setIsAvatarModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+  const closeManagerModal = () => {
+    setIsManagerModalOpen(false);
+    document.body.style.overflow = "auto";
+  };
+  const openManagerModal = () => {
+    setIsManagerModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
 
   const {
     name: userName,
@@ -86,7 +99,7 @@ export default function Profile() {
   return (
     <ProfileMain>
       <ProfileContainer>
-        <Column $gap="10px">
+        <StyledSection>
           <ProfileImage
             userName={userName}
             avatar={avatar}
@@ -96,20 +109,21 @@ export default function Profile() {
             userName={userName}
             email={email}
             venueManager={venueManager}
+            openAvatarModal={openAvatarModal}
           />
-
           <UpgradeCreateButtons
             venueManager={venueManager}
             openManagerModal={openManagerModal}
           />
-        </Column>
-        <Column>
+        </StyledSection>
+        <Line />
+        <StyledSection>
           <UserVenues
             userData={userData}
             setUserData={setUserData}
             isVenueManager={isVenueManager}
           />
-        </Column>
+        </StyledSection>
       </ProfileContainer>
 
       {isAvatarModalOpen && (

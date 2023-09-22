@@ -35,6 +35,11 @@ export const theme = createTheme({
           backgroundColor: "var(--clr-white)",
           paddingRight: "6px",
         },
+        root: {
+          "&.Mui-focused": {
+            color: "var(--clr-text)",
+          },
+        },
       },
     },
     MuiOutlinedInput: {
@@ -48,6 +53,28 @@ export const theme = createTheme({
     MuiSvgIcon: {
       styleOverrides: {
         root: { width: "24px", height: "24px", fill: "var(--clr-dark)" },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          "&.MuiDayCalendar-weekDayLabel": { fontSize: "1.2rem" },
+        },
+      },
+    },
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          "&.MuiPickersDay-root": {
+            fontSize: "1.2rem",
+            "&.Mui-selected": {
+              background: "var(--gradient-primary)",
+              "&:hover, &:focus": {
+                backgroundColor: "var(--gradient-primary)",
+              },
+            },
+          },
+        },
       },
     },
   },

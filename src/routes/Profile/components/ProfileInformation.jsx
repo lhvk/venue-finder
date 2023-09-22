@@ -1,11 +1,27 @@
+import { EditButton } from "../../../components/Buttons/EditButton";
 import { Email, ProfileInfo } from "../styled";
 
-export function ProfileInformation({ userName, email, venueManager }) {
+export function ProfileInformation({
+  userName,
+  email,
+  venueManager,
+  openAvatarModal,
+}) {
   return (
     <ProfileInfo>
-      <h1>{userName}</h1>
-      <Email>{email}</Email>
-      <p>Current plan: {venueManager ? "Venue Manager" : "Customer"}</p>
+      <div>
+        <h1>
+          {userName} ({venueManager ? "Venue Manager" : "Customer"})
+        </h1>
+        <Email>{email}</Email>
+      </div>
+      <div>
+        <EditButton
+          buttonTitle="Edit avatar"
+          onClick={openAvatarModal}>
+          Edit avatar
+        </EditButton>
+      </div>
     </ProfileInfo>
   );
 }

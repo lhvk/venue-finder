@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { getBookingSchema } from "../../../schemas";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { handleBookVenueFormSubmit } from "../../../handlers/handleBookVenueFormSubmit";
+import { BookVenueForm } from "../../../forms/BookVenueForm";
+import { Modal } from "../../../components/Modal";
+import { Button } from "../../../components/Buttons";
 
 export function BookVenueModal({ venue, accessToken, isVenueManager }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,16 +50,31 @@ export function BookVenueModal({ venue, accessToken, isVenueManager }) {
     );
   };
   return (
-    isModalOpen &&
-    !isVenueManager && (
-      <Modal
-        closeModal={closeModal}
-        modalTitle={accessToken ? "Book venue" : "View available dates"}
-        buttonType="submit"
-        formId="book-venue-form"
-        infoOnly={!accessToken}
-        children={
-          <>
+    <>
+      {!isVenueManager && (
+        <Button onClick={openModal}>
+          {accessToken ? "Book this venue" : "View available dates"}
+        </Button>
+      )}
+
+      <BookVenueForm
+        isLoggedIn={accessToken}
+        register={register}
+        onSubmit={handleSubmit(onSubmit)}
+        errors={errors}
+        setDate={setDate}
+        date={date}
+        venue={venue}
+      />
+
+      {isModalOpen && !isVenueManager && (
+        <Modal
+          closeModal={closeModal}
+          modalTitle={accessToken ? "Book venue" : "View available dates"}
+          buttonType="submit"
+          formId="book-venue-form"
+          infoOnly={!accessToken}
+          children={
             <BookVenueForm
               isLoggedIn={accessToken}
               register={register}
@@ -63,9 +84,9 @@ export function BookVenueModal({ venue, accessToken, isVenueManager }) {
               date={date}
               venue={venue}
             />
-          </>
-        }
-      />
-    )
+          }
+        />
+      )}
+    </>
   );
 }

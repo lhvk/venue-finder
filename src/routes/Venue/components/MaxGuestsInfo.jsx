@@ -4,7 +4,7 @@ import { MaxGuests, MaxGuestsContainer } from "../styled";
 export function MaxGuestsInfo({ venue }) {
   return (
     <MaxGuestsContainer>
-      <h4>Max Guests:</h4>
+      <h4>Max Guests</h4>
       <MaxGuests>
         <Icon
           id="people-icon"

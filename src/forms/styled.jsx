@@ -5,13 +5,14 @@ export const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.$gap || "10px"};
-  padding-block: 20px;
+  padding-block: ${(props) => props.$paddingBlock || "20px"};
   border: 1px solid var(--clr-white);
   border-radius: 5px;
   width: ${(props) => props.$width || "100%"};

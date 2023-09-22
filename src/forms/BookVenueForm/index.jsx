@@ -1,3 +1,4 @@
+import { Button } from "../../components/Buttons";
 import { DateRangePicker } from "../../components/DateRangePicker";
 import { ErrorMessage, FormBody, FormContainer, Input, Form } from "../styled";
 import { TextField } from "@mui/material";
@@ -9,11 +10,11 @@ export function BookVenueForm({
   date,
   setDate,
   venue,
-  isLoggedIn,
 }) {
   return (
     <FormContainer>
       <Form
+        $paddingBlock="0"
         onSubmit={onSubmit}
         id="book-venue-form">
         <FormBody>
@@ -26,30 +27,35 @@ export function BookVenueForm({
               })}
             />
           </div>
+
           <DateRangePicker
             date={date}
             setDate={setDate}
             venue={venue}
             errors={errors}
-            isLoggedIn={isLoggedIn}
           />
-          {isLoggedIn && (
-            <div>
-              <TextField
-                label="Number of guests"
-                type="number"
-                id="guests"
-                {...register("guests", {
-                  required: "Number of guests is required",
-                })}
-                sx={{ width: "100%" }}
-              />
-              {errors.guests && (
-                <ErrorMessage>{errors.guests.message}</ErrorMessage>
-              )}
-            </div>
-          )}
+
+          <div>
+            <TextField
+              label="Number of guests"
+              type="number"
+              id="guests"
+              {...register("guests", {
+                required: "Number of guests is required",
+              })}
+              sx={{ width: "100%" }}
+            />
+            {errors.guests && (
+              <ErrorMessage>{errors.guests.message}</ErrorMessage>
+            )}
+          </div>
         </FormBody>
+
+        <Button
+          $maxWidth="100%"
+          type="submit">
+          Book this venue
+        </Button>
       </Form>
     </FormContainer>
   );

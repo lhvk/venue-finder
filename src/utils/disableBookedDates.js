@@ -1,8 +1,7 @@
 import { endOfDay, startOfDay } from "date-fns";
 
 export function disableBookedDates(date, venue) {
-  console.log("venue inside disableBooked", venue);
-  if (venue.bookings.length === 0) return false;
+  if (!venue || !venue.bookings || venue.bookings.length === 0) return false;
 
   for (const booking of venue.bookings) {
     const startDate = startOfDay(new Date(booking.dateFrom));

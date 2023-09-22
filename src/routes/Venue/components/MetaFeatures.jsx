@@ -11,7 +11,7 @@ export function MetaFeatures({ venue }) {
 
     return (
       <List>
-        <h4>Included:</h4>
+        <h4>Included</h4>
         {metaFeaturesArray.map((feature) => (
           <FeatureListItem
             key={feature.featureName}

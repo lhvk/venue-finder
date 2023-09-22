@@ -1,3 +1,6 @@
+import placeholderProfileImg from "../assets/placeholder_profile.jpg";
+import placeHolderVenueImg from "../assets/cottage200kb.jpg";
+
 // Breakpoints
 const breakpoints = {
   small: "480px",
@@ -29,5 +32,7 @@ export const PUT = "PUT";
 export const DELETE = "DELETE";
 
 // Placeholder Venue Image
-export const PLACEHOLDER_IMG =
-  "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3000&q=80";
+export const PLACEHOLDER_IMG = placeHolderVenueImg;
+
+// Placeholder Profile Image
+export const PLACEHOLDER_PROFILE_IMG = placeholderProfileImg;
