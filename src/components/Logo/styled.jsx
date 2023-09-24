@@ -7,6 +7,7 @@ export const LogoLink = styled(HoverNavLink)`
   display: flex;
   gap: 10px;
   align-items: center;
+  transition: opacity 300ms ease-in-out;
 
   .half-text {
     color: var(--clr-pink);

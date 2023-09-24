@@ -10,17 +10,17 @@ export const theme = createTheme({
         colorPrimary: {
           "&.Mui-checked": {
             // Controls checked color for the thumb
-            color: "var(--clr-secondary)",
+            color: "var(--clr-pink)",
           },
         },
         track: {
           // Controls default (unchecked) color for the track
           opacity: 0.4,
           backgroundColor: "var(--clr-pink)",
-          ".Mui-checked.Mui-checked + &": {
+          ".Mui-checked + &": {
             // Controls checked color for the track
             opacity: 0.7,
-            backgroundColor: "var(--clr-pink)",
+            backgroundColor: "var(--clr-pink)!important",
           },
         },
       },

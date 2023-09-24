@@ -1,9 +1,11 @@
+import { toast } from "react-toastify";
 import { BOOKINGS_URL, VENUE_URL } from "../config";
 
-export async function deleteEntry(id, token, isVenue) {
+export async function deleteEntry(id, token, isVenueManager, setIsSubmitting) {
   try {
+    setIsSubmitting(true);
     const response = await fetch(
-      `${isVenue ? VENUE_URL : BOOKINGS_URL}/${id}`,
+      `${isVenueManager ? VENUE_URL : BOOKINGS_URL}/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -14,11 +16,13 @@ export async function deleteEntry(id, token, isVenue) {
     );
 
     if (!response.ok) {
-      throw new Error(`Error deleting entry with ID ${id}: ${response.status}`);
+      throw new Error(`Error deleting entry: ${response.status}`);
     }
 
-    console.log(`Entry with ID ${id} has been deleted.`);
+    toast.success(`Entry has been deleted.`, { position: "bottom-right" });
   } catch (error) {
-    console.error("An error occurred:", error);
+    toast.error(error, { position: "bottom-right" });
+  } finally {
+    setIsSubmitting(false);
   }
 }

@@ -5,7 +5,7 @@ import { Loader } from "../../components/Loader";
 import SearchBar from "../../components/SearchBar";
 import { VENUE_URL } from "../../config";
 import { useFetch } from "../../hooks/useFetch";
-import { GridContainer } from "./styled";
+import { CardSection, GridContainer } from "./styled";
 
 export default function Home() {
   const { data: venues, isLoading, isError } = useFetch(VENUE_URL);
@@ -25,7 +25,7 @@ export default function Home() {
           />
         }
       />
-      <section>
+      <CardSection>
         {isLoading && <Loader message={"venues"} />}
         <GridContainer>
           {isError && <p>An error has occurred...</p>}
@@ -39,11 +39,11 @@ export default function Home() {
               title={venue.name}
               ratingAverage={venue.rating}
               totalReviews={venue.rating ?? Math.random(1, 20)}
-              tag={venue.location.country}
+              tag={venue.location.country || "Norway"}
             />
           ))}
         </GridContainer>
-      </section>
+      </CardSection>
     </main>
   );
 }

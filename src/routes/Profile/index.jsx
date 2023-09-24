@@ -9,7 +9,6 @@ import { ProfileContainer, ProfileMain, StyledSection } from "./styled";
 import { UpgradeToVenueManagerForm } from "../../forms/UpgradeToVenueManagerForm";
 import { EditAvatarForm } from "../../forms/EditAvatarForm";
 import { useFetch } from "../../hooks/useFetch";
-import { Loader } from "../../components/Loader";
 import {
   ProfileImage,
   ProfileInformation,
@@ -22,24 +21,25 @@ import { Line } from "../../components/Line";
 
 export default function Profile() {
   const profileInfo = getLocalStorageItem("user");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
   const [isManagerModalOpen, setIsManagerModalOpen] = useState(false);
   const [userData, setUserData] = useState();
   const closeAvatarModal = () => {
     setIsAvatarModalOpen(false);
-    document.body.style.overflow = "auto";
+    // document.body.style.overflow = "auto";
   };
   const openAvatarModal = () => {
     setIsAvatarModalOpen(true);
-    document.body.style.overflow = "hidden";
+    // document.body.style.overflow = "hidden";
   };
   const closeManagerModal = () => {
     setIsManagerModalOpen(false);
-    document.body.style.overflow = "auto";
+    // document.body.style.overflow = "auto";
   };
   const openManagerModal = () => {
     setIsManagerModalOpen(true);
-    document.body.style.overflow = "hidden";
+    // document.body.style.overflow = "hidden";
   };
 
   const {
@@ -71,12 +71,15 @@ export default function Profile() {
   const {
     register,
     handleSubmit,
+    watch,
     reset: resetForm,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: profileInfo,
   });
+
+  const isChecked = watch();
 
   const onSubmit = async (formData) => {
     await handleProfileFormSubmit(
@@ -86,13 +89,13 @@ export default function Profile() {
       profileInfo,
       resetForm,
       closeAvatarModal,
-      closeManagerModal
+      closeManagerModal,
+      setIsSubmitting,
+      isAvatarModalOpen
     );
   };
 
   if (!profileInfo) return <Navigate to="/forbidden" />;
-
-  if (!data && isLoading) return <Loader message={"your venues"} />;
 
   if (isError) return <p>Something went wrong..</p>;
 
@@ -122,6 +125,9 @@ export default function Profile() {
             userData={userData}
             setUserData={setUserData}
             isVenueManager={isVenueManager}
+            setIsSubmitting={setIsSubmitting}
+            isSubmitting={isSubmitting}
+            isLoading={isLoading}
           />
         </StyledSection>
       </ProfileContainer>
@@ -129,6 +135,7 @@ export default function Profile() {
       {isAvatarModalOpen && (
         <Modal
           closeModal={closeAvatarModal}
+          isSubmitting={isSubmitting}
           formId="edit-avatar-form"
           modalTitle="Edit avatar"
           buttonType="submit"
@@ -144,9 +151,12 @@ export default function Profile() {
       {isManagerModalOpen && (
         <Modal
           closeModal={closeManagerModal}
+          isSubmitting={isSubmitting}
           formId="upgrade-to-manager-form"
           modalTitle="Upgrade to Venue Manager"
           buttonType="submit"
+          isChecked={isChecked}
+          isModalOpen={isManagerModalOpen}
           children={
             <UpgradeToVenueManagerForm
               register={register}

@@ -35,6 +35,7 @@ export const ResultsContainer = styled.ul`
   padding: 12.5px;
   position: absolute;
   top: 240px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   z-index: 99999;
 
   @media (${MOBILE}) {

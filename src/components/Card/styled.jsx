@@ -47,7 +47,7 @@ export const TagContainer = styled.div`
   font-weight: 600;
   text-transform: uppercase;
   padding: 3px;
-  width: 80px;
+  min-width: 80px;
   border-radius: 3px;
   text-align: center;
   color: var(--clr-white);

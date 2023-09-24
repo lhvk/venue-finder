@@ -1,5 +1,10 @@
 import { styled } from "styled-components";
 
+export const CardSection = styled.section`
+  max-width: 1920px;
+  margin: auto;
+`;
+
 export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

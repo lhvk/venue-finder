@@ -1,4 +1,4 @@
-import { EditButton } from "../../../components/Buttons/EditButton";
+import { EditButton } from "../../../components/Buttons";
 import { Email, ProfileInfo } from "../styled";
 
 export function ProfileInformation({

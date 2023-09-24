@@ -17,6 +17,7 @@ export const NavHeader = styled.header`
     justify-content: space-between;
     width: 100%;
     padding-inline: 20px;
+    max-width: 1920px;
 
     & nav {
       display: flex;
@@ -45,6 +46,7 @@ export const ProfileLink = styled(HoverNavLink)`
   display: flex;
   align-items: center;
   gap: 5px;
+  transition: opacity 300ms ease-in-out;
 `;
 
 export const LoginLink = styled(NavLink)`
@@ -54,6 +56,7 @@ export const LoginLink = styled(NavLink)`
   border: 1px solid ${"var(--clr-white)"};
   padding-inline: ${(props) => props.$px || "10px"};
   padding-block: ${(props) => props.$py || null};
+  transition: opacity 300ms ease-in-out;
 
   &:hover {
     cursor: pointer;
@@ -68,6 +71,7 @@ export const LogoutLink = styled.button`
   border: 1px solid
     ${(props) => (props.$isHomePage ? "var(--clr-white)" : "var(--clr-dark)")};
   padding: 3px 10px;
+  transition: opacity 300ms ease-in-out;
 
   &:hover {
     cursor: pointer;

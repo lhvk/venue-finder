@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { MOBILE } from "../../config";
 
 export const ProfileMain = styled.main`
   display: flex;
@@ -29,10 +28,7 @@ export const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-
-  @media (${MOBILE}) {
-    padding: 10px;
-  }
+  padding: 10px;
 `;
 
 export const ProfileInfo = styled.div`
@@ -53,9 +49,9 @@ export const UserVenuesList = styled.ul`
 `;
 
 export const UserVenueThumbnail = styled.img`
-  width: 100px;
-  height: 100%;
-  object-fit: contain;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
   border-radius: 8px;
 `;
 

@@ -44,12 +44,14 @@ export default function Venue() {
   return (
     <VenueMain>
       <VenueContainer>
-        <VenueImage venue={venue} />
-        <StyledSection>
-          <HeadingBar
-            venue={venue}
-            name={name}
-          />
+        <VenueImage
+          venue={venue}
+          name={name}
+        />
+        <StyledSection
+          $isVenueManager={isVenueManager}
+          $isUnregistered={!accessToken}>
+          <HeadingBar venue={venue} />
           <div>
             <BookVenue
               venue={venue}

@@ -109,7 +109,8 @@ export const StyledSection = styled.section`
   grid-template-columns: repeat(2, auto);
   gap: 20px;
 
-  @media (${MOBILE}) {
+  @media (${(props) =>
+      props.$isVenueManager || props.$isUnregistered ? TABLET : MOBILE}) {
     grid-template-columns: 1fr;
   }
 `;

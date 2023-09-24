@@ -6,11 +6,12 @@ import { handleBookVenueFormSubmit } from "../../../handlers/handleBookVenueForm
 import { BookVenueForm } from "../../../forms/BookVenueForm";
 import { StaticDatePicker } from "@mui/x-date-pickers";
 import { disableBookedDates } from "../../../utils/disableBookedDates";
-import { MOBILE } from "../../../config";
+import { TABLET } from "../../../config";
 import { useMediaQuery } from "@mui/material";
+import { Line } from "../../../components/Line";
 
 export function BookVenue({ venue, accessToken, isVenueManager }) {
-  const isMobile = useMediaQuery(MOBILE);
+  const isTablet = useMediaQuery(TABLET);
   const [date, setDate] = useState({
     dateFrom: null,
     dateTo: null,
@@ -42,6 +43,8 @@ export function BookVenue({ venue, accessToken, isVenueManager }) {
     formData.dateTo = formData.dateTo.toISOString();
 
     await handleBookVenueFormSubmit(formData, accessToken, resetForm);
+
+    setDate({ dateFrom: null, dateTo: null });
   };
 
   const isCustomer = !isVenueManager && accessToken;
@@ -59,6 +62,7 @@ export function BookVenue({ venue, accessToken, isVenueManager }) {
     />
   ) : (
     <>
+      {isTablet && <Line />}
       <StaticDatePicker
         shouldDisableDate={(date) => disableBookedDates(date, venue)}
         disablePast
@@ -75,8 +79,16 @@ export function BookVenue({ venue, accessToken, isVenueManager }) {
             display: "none",
           },
           "&.MuiPickersLayout-root": {
-            justifyContent: isMobile ? "start" : "end",
-            margin: "-20px",
+            alignItems: "flex-start",
+            minWidth: "256px",
+            display: "flex",
+            flexDirection: "column",
+
+            ".MuiPickersLayout-contentWrapper": {
+              ".MuiDateCalendar-root": {
+                width: "unset",
+              },
+            },
           },
         }}
       />

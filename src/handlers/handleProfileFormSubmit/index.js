@@ -1,5 +1,6 @@
 import { MEDIA, PROFILE_URL, PUT } from "../../config";
 import { fetchOptions } from "../../api/index";
+import { toast } from "react-toastify";
 
 export async function handleProfileFormSubmit(
   formData,
@@ -8,14 +9,17 @@ export async function handleProfileFormSubmit(
   profileInfo,
   resetForm,
   closeAvatarModal,
-  closeManagerModal
+  closeManagerModal,
+  setIsSubmitting,
+  isAvatarModalOpen
 ) {
   const updateAvatarURL = `${PROFILE_URL}/${userName}/${MEDIA}`;
   const upgradeToManagerURL = `${PROFILE_URL}/${userName}`;
 
   try {
+    setIsSubmitting(true);
     const response = await fetch(
-      formData.avatar ? updateAvatarURL : upgradeToManagerURL,
+      isAvatarModalOpen ? updateAvatarURL : upgradeToManagerURL,
       fetchOptions(formData, PUT, token)
     );
 
@@ -24,6 +28,8 @@ export async function handleProfileFormSubmit(
     }
 
     const data = await response.json();
+
+    console.log("data", data);
 
     let updatedProfileInfo = {
       ...profileInfo,
@@ -42,7 +48,15 @@ export async function handleProfileFormSubmit(
       closeManagerModal();
       localStorage.setItem("user", JSON.stringify(updatedProfileInfo));
     }
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    toast.error(error, { position: "bottom-right" });
+  } finally {
+    setIsSubmitting(false);
+    toast.success(
+      isAvatarModalOpen
+        ? "Avatar image updated"
+        : "You are now a Venue Manager",
+      { position: "bottom-right" }
+    );
   }
 }

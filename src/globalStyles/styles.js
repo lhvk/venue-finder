@@ -3,20 +3,22 @@ import { css } from "styled-components";
 export const buttonStyles = css`
   color: ${(props) => props.$color || "var(--clr-white)"};
   font-size: inherit;
-  background: ${(props) =>
-    props.$background ||
-    "linear-gradient(0.25turn, var(--clr-pink), var(--clr-primary))"};
-  border: none;
+  background: ${(props) => props.$background || "var(--gradient-primary)"};
+  border: ${(props) => props.$border || "none"};
   padding-inline: ${(props) => props.$px || "16px"};
   padding-block: ${(props) => props.$py || "8px"};
   cursor: pointer;
   max-width: ${(props) => props.$maxWidth || "fit-content"};
   width: ${(props) => props.$width};
   border-radius: 8px;
-  transition: padding-inline 500ms, opacity 500ms ease-in-out;
+  opacity: ${(props) => (props.$isCancelBtn ? 0.7 : "unset")};
+  transition: opacity 300ms ease-in-out;
 
   &:hover {
-    padding-inline: 20px;
-    opacity: 0.8;
+    opacity: ${(props) => (props.$isCancelBtn ? 1 : 0.8)};
+  }
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
   }
 `;

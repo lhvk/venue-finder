@@ -1,4 +1,4 @@
-import { BackButton } from "../Buttons/BackButton";
+import { BackButton } from "../Buttons";
 import { BackButtonContainer, HeadingContainer } from "./styled";
 
 export function PageHeader({ pageTitle }) {

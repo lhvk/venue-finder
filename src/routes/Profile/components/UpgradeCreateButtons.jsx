@@ -1,16 +1,19 @@
-import { Button, ButtonNavLink } from "../../../components/Buttons";
+import { ButtonNavLink, LinkButton } from "../../../components/Buttons";
 
 export function UpgradeCreateButtons({ venueManager, openManagerModal }) {
   return (
-    <div>
+    <>
       {venueManager ? (
-        <ButtonNavLink to="/create-venue">Create venue</ButtonNavLink>
+        <div style={{ marginTop: "20px" }}>
+          <ButtonNavLink to="/create-venue">Create venue</ButtonNavLink>
+        </div>
       ) : (
-        <>
-          <p>To create venues - Upgrade to Venue Manager</p>
-          <Button onClick={openManagerModal}>Upgrade</Button>
-        </>
+        <div>
+          To create venues{" "}
+          <LinkButton onClick={openManagerModal}>upgrade</LinkButton> to Venue
+          Manager
+        </div>
       )}
-    </div>
+    </>
   );
 }

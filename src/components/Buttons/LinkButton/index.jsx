@@ -1,0 +1,15 @@
+import styled from "styled-components";
+
+export const LinkButton = styled.button`
+  background: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+  color: ${(props) => props.color || "var(--clr-pink)"};
+  border: 0;
+  font-size: inherit;
+  transition: opacity 300ms ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;

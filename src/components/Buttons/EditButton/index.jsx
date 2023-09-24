@@ -1,5 +1,5 @@
-import { ActionsButton } from "..";
 import { Icon } from "../../Icon";
+import { ActionsButton } from "../ActionsButton";
 
 export function EditButton({ buttonTitle, onClick, children }) {
   return (

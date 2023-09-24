@@ -15,6 +15,7 @@ export function DateRangePicker({ date, setDate, errors, venue }) {
           }}
           sx={{ width: "100%" }}
           shouldDisableDate={(date) => disableBookedDates(date, venue)}
+          value={date.dateFrom || null}
         />
 
         {errors.dateFrom && (
@@ -27,7 +28,7 @@ export function DateRangePicker({ date, setDate, errors, venue }) {
           disablePast
           label="Check-out date"
           id="dateTo"
-          value={date.dateTo}
+          value={date.dateTo || null}
           onChange={(value) => {
             setDate({ ...date, dateTo: value });
           }}

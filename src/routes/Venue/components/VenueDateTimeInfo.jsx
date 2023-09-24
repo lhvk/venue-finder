@@ -5,11 +5,11 @@ export function VenueDateTimeInfo({ venue }) {
   return (
     <CreatedContainer>
       <div>
-        <h4>Created</h4>
+        <h3>Created</h3>
         <p>{getRelativeTime(venue.created)}</p>
       </div>
       <div>
-        <h4>Updated</h4>
+        <h3>Updated</h3>
         <p>{getRelativeTime(venue.updated)}</p>
       </div>
     </CreatedContainer>

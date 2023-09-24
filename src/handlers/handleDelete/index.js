@@ -1,36 +1,29 @@
 import { deleteEntry } from "../../api/delete";
 import { getLocalStorageItem } from "../../utils/localStorageUtils";
 
-export async function handleDelete(entryId, setUserData) {
-  const { accessToken: token, venueManager: isVenue } =
+export async function handleDelete(entryId, setUserData, setIsSubmitting) {
+  const { accessToken: token, venueManager: isVenueManager } =
     getLocalStorageItem("user");
 
-  if (
-    window.confirm(
-      `Are you sure you want to delete this ${isVenue ? "venue" : "booking"}?`
-    )
-  ) {
-    try {
-      await deleteEntry(entryId, token, isVenue);
+  try {
+    await deleteEntry(entryId, token, isVenueManager, setIsSubmitting);
 
-      setUserData((prevUserData) => {
-        if (isVenue) {
-          // If it's a venue, filter the venues array
-          return {
-            ...prevUserData,
-            venues: prevUserData.venues.filter((venue) => venue.id !== entryId),
-          };
-        }
-
+    setUserData((prevUserData) => {
+      if (isVenueManager) {
         return {
           ...prevUserData,
-          bookings: prevUserData.bookings.filter(
-            (booking) => booking.id !== entryId
-          ),
+          venues: prevUserData.venues.filter((venue) => venue.id !== entryId),
         };
-      });
-    } catch (error) {
-      console.error(error);
-    }
+      }
+
+      return {
+        ...prevUserData,
+        bookings: prevUserData.bookings.filter(
+          (booking) => booking.id !== entryId
+        ),
+      };
+    });
+  } catch (error) {
+    console.error(error);
   }
 }
