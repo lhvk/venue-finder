@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export function useFetch(url, uploadData = undefined, token = undefined) {
   const [data, setData] = useState([]);
@@ -25,7 +26,7 @@ export function useFetch(url, uploadData = undefined, token = undefined) {
 
         setData(responseData);
       } catch (error) {
-        console.error(error);
+        toast.error(`${error}`, { position: "bottom-right" });
         setIsError(true);
       } finally {
         setIsLoading(false);

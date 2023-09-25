@@ -14,6 +14,7 @@ import { Line } from "../../../components/Line";
 import { handleDelete } from "../../../handlers";
 import { PLACEHOLDER_IMG } from "../../../config";
 import { Loader } from "../../../components/Loader";
+import { VenueBookings } from "./VenueBookings";
 
 export function VenueManager({
   userData,
@@ -24,21 +25,37 @@ export function VenueManager({
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const closeBookingsModal = () => setIsModalOpen(false);
-  const openBookingsModal = () => setIsModalOpen(true);
-  const closeConfirmModal = () => setIsConfirmModalOpen(false);
-  const openConfirmModal = () => setIsConfirmModalOpen(true);
+  const [selectedVenue, setSelectedVenue] = useState({});
+
+  const closeBookingsModal = () => {
+    setIsModalOpen(false);
+    document.body.style.overflow = "auto";
+  };
+  const openBookingsModal = () => {
+    setIsModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+  const closeConfirmModal = () => {
+    setIsConfirmModalOpen(false);
+    document.body.style.overflow = "auto";
+  };
+  const openConfirmModal = () => {
+    setIsConfirmModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  function handleVenueClick(venue, openModal) {
+    setSelectedVenue(venue);
+    openModal();
+  }
 
   return (
     <>
-      <h2>Your venues</h2>
-
+      <h2 style={{ marginBottom: "10px" }}>Your venues</h2>
       {isLoading && <Loader message={"your venues"} />}
-
       {!isLoading && userData?._count?.venues === 0 && (
         <p>You have no venues...</p>
       )}
-
       <UserVenuesList>
         {userData?.venues?.map((venue) => (
           <React.Fragment key={venue.id}>
@@ -55,23 +72,29 @@ export function VenueManager({
 
                   <LinkButton
                     color="var(--clr-dark)"
-                    onClick={openBookingsModal}>
+                    onClick={() => handleVenueClick(venue, openBookingsModal)}>
                     View bookings
                   </LinkButton>
                 </div>
               </Container>
+
               <ButtonsContainer>
                 <DeleteButton
-                  onClick={openConfirmModal}
+                  onClick={() => handleVenueClick(venue, openConfirmModal)}
                   buttonTitle="Delete venue"
                 />
 
                 {isConfirmModalOpen && (
                   <ConfirmModal
-                    modalTitle={venue.name}
+                    modalTitle={selectedVenue.name}
                     isSubmitting={isSubmitting}
                     onClick={() =>
-                      handleDelete(venue.id, setUserData, setIsSubmitting)
+                      handleDelete(
+                        selectedVenue.id,
+                        setUserData,
+                        setIsSubmitting,
+                        closeConfirmModal
+                      )
                     }
                     closeModal={closeConfirmModal}>
                     Are you sure you want to delete this venue?
@@ -88,30 +111,16 @@ export function VenueManager({
         ))}
       </UserVenuesList>
 
-      {isModalOpen &&
-        userData?.venues.map((venue, i) => (
-          <React.Fragment key={i}>
-            <Modal
-              infoOnly={true}
-              modalTitle={venue.name}
-              closeModal={closeBookingsModal}>
-              <>
-                <h3>Upcoming bookings</h3>
-                {userData._count.bookings === 0 ? (
-                  <p>You have no upcoming bookings on this venue..</p>
-                ) : (
-                  userData.bookings.map((booking) => {
-                    return (
-                      <ul key={booking.id}>
-                        <li>{booking.name}</li>
-                      </ul>
-                    );
-                  })
-                )}
-              </>
-            </Modal>
-          </React.Fragment>
-        ))}
+      {isModalOpen && (
+        <React.Fragment key={selectedVenue.id}>
+          <Modal
+            infoOnly={true}
+            modalTitle={selectedVenue.name}
+            closeModal={closeBookingsModal}>
+            <VenueBookings venueId={selectedVenue.id} />
+          </Modal>
+        </React.Fragment>
+      )}
     </>
   );
 }

@@ -10,10 +10,11 @@ import { UpgradeToVenueManagerForm } from "../../forms/UpgradeToVenueManagerForm
 import { EditAvatarForm } from "../../forms/EditAvatarForm";
 import { useFetch } from "../../hooks/useFetch";
 import {
+  Customer,
   ProfileImage,
   ProfileInformation,
   UpgradeCreateButtons,
-  UserVenues,
+  VenueManager,
 } from "./components";
 import { handleProfileFormSubmit } from "../../handlers";
 import { Navigate } from "react-router-dom";
@@ -25,21 +26,22 @@ export default function Profile() {
   const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
   const [isManagerModalOpen, setIsManagerModalOpen] = useState(false);
   const [userData, setUserData] = useState();
+
   const closeAvatarModal = () => {
     setIsAvatarModalOpen(false);
-    // document.body.style.overflow = "auto";
+    document.body.style.overflow = "auto";
   };
   const openAvatarModal = () => {
     setIsAvatarModalOpen(true);
-    // document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
   };
   const closeManagerModal = () => {
     setIsManagerModalOpen(false);
-    // document.body.style.overflow = "auto";
+    document.body.style.overflow = "auto";
   };
   const openManagerModal = () => {
     setIsManagerModalOpen(true);
-    // document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
   };
 
   const {
@@ -121,14 +123,26 @@ export default function Profile() {
         </StyledSection>
         <Line />
         <StyledSection>
-          <UserVenues
-            userData={userData}
-            setUserData={setUserData}
-            isVenueManager={isVenueManager}
-            setIsSubmitting={setIsSubmitting}
-            isSubmitting={isSubmitting}
-            isLoading={isLoading}
-          />
+          {isVenueManager && (
+            <VenueManager
+              isSubmitting={isSubmitting}
+              setIsSubmitting={setIsSubmitting}
+              setUserData={setUserData}
+              userData={userData}
+              isLoading={isLoading}
+              token={token}
+            />
+          )}
+
+          {!isVenueManager && (
+            <Customer
+              userData={userData}
+              isVenueManager={isVenueManager}
+              isSubmitting={isSubmitting}
+              setUserData={setUserData}
+              isLoading={isLoading}
+            />
+          )}
         </StyledSection>
       </ProfileContainer>
 

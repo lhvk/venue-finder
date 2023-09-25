@@ -1,6 +1,6 @@
 import { Loader as LoadingAnimation } from "react-loaders";
 
-export function Loader({ message = undefined }) {
+export function Loader({ message = undefined, size }) {
   return (
     <div
       style={{
@@ -15,7 +15,7 @@ export function Loader({ message = undefined }) {
         type="ball-grid-pulse"
         active
         color="#333"
-        style={{ transform: "scale(1.5)" }}
+        style={{ transform: `scale(${size})` || "scale(1.5)" }}
       />
       <span>Loading {message ?? ""}...</span>
     </div>

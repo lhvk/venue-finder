@@ -9,6 +9,7 @@ import { disableBookedDates } from "../../../utils/disableBookedDates";
 import { TABLET } from "../../../config";
 import { useMediaQuery } from "@mui/material";
 import { Line } from "../../../components/Line";
+import { staticDatePickerStyles } from "../../../globalStyles/styles";
 
 export function BookVenue({ venue, accessToken, isVenueManager }) {
   const isTablet = useMediaQuery(TABLET);
@@ -63,35 +64,29 @@ export function BookVenue({ venue, accessToken, isVenueManager }) {
   ) : (
     <>
       {isTablet && <Line />}
-      <StaticDatePicker
-        shouldDisableDate={(date) => disableBookedDates(date, venue)}
-        disablePast
-        readOnly
-        disableHighlightToday
-        slotProps={{
-          calendarHeader: { disablePast: true },
-          toolbar: {
-            toolbarPlaceholder: "Available dates",
-          },
-        }}
-        sx={{
-          ".MuiDialogActions-root": {
-            display: "none",
-          },
-          "&.MuiPickersLayout-root": {
-            alignItems: "flex-start",
-            minWidth: "256px",
-            display: "flex",
-            flexDirection: "column",
-
-            ".MuiPickersLayout-contentWrapper": {
-              ".MuiDateCalendar-root": {
-                width: "unset",
-              },
+      <div>
+        <h3
+          style={{
+            width: "280px",
+            marginLeft: isTablet ? 0 : "auto",
+            marginTop: isTablet ? "20px" : 0,
+          }}>
+          Available dates
+        </h3>
+        <StaticDatePicker
+          shouldDisableDate={(date) => disableBookedDates(date, venue)}
+          disablePast
+          readOnly
+          disableHighlightToday
+          slotProps={{
+            calendarHeader: { disablePast: true },
+            toolbar: {
+              hidden: true,
             },
-          },
-        }}
-      />
+          }}
+          sx={staticDatePickerStyles(isTablet)}
+        />
+      </div>
     </>
   );
 }

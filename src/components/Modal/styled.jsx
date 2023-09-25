@@ -51,7 +51,7 @@ export const ModalBody = styled.div`
   background-color: inherit;
   max-height: 300px;
   overflow-y: auto;
-  padding: 20px 16px;
+  padding: 0 20px 16px 16px;
 
   &::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);

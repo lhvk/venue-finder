@@ -8,6 +8,7 @@ export const LinkButton = styled.button`
   border: 0;
   font-size: inherit;
   transition: opacity 300ms ease-in-out;
+  text-underline-offset: ${(props) => props.offset || "unset"};
 
   &:hover {
     opacity: 0.8;

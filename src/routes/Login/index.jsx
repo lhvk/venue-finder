@@ -6,6 +6,7 @@ import { fetchOptions } from "../../api";
 import { setLocalStorageItem } from "../../utils/localStorageUtils";
 import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../../forms/LoginForm";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const {
@@ -21,14 +22,12 @@ export default function Login() {
     try {
       const response = await fetch(LOGIN_URL, fetchOptions(data, POST));
       const userData = await response.json();
-      if (!response.ok)
-        throw new Error(`Something went wrong: ${response.status}`);
+      if (!response.ok) throw new Error(userData.errors[0].message);
 
       navigate("/profile");
       return setLocalStorageItem("user", userData);
     } catch (error) {
-      console.error("Error:", error);
-      throw error;
+      toast.error(`${error}`, { position: "bottom-right" });
     }
   }
 

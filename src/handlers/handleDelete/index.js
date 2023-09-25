@@ -1,12 +1,24 @@
+import { toast } from "react-toastify";
 import { deleteEntry } from "../../api/delete";
 import { getLocalStorageItem } from "../../utils/localStorageUtils";
 
-export async function handleDelete(entryId, setUserData, setIsSubmitting) {
+export async function handleDelete(
+  entryId,
+  setUserData,
+  setIsSubmitting,
+  closeModal
+) {
   const { accessToken: token, venueManager: isVenueManager } =
     getLocalStorageItem("user");
 
   try {
-    await deleteEntry(entryId, token, isVenueManager, setIsSubmitting);
+    await deleteEntry(
+      entryId,
+      token,
+      isVenueManager,
+      setIsSubmitting,
+      closeModal
+    );
 
     setUserData((prevUserData) => {
       if (isVenueManager) {
@@ -24,6 +36,6 @@ export async function handleDelete(entryId, setUserData, setIsSubmitting) {
       };
     });
   } catch (error) {
-    console.error(error);
+    toast.error(`${error}`, { position: "bottom-right" });
   }
 }

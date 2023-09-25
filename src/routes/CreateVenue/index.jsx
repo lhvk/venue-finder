@@ -9,6 +9,7 @@ import { getLocalStorageItem } from "../../utils/localStorageUtils";
 import { createVenueDefaultValues } from "../../schemas/createVenueDefaultValues";
 import { PageHeader } from "../../components/PageHeader";
 import { Main } from "../../components/Main";
+import { toast } from "react-toastify";
 
 export default function CreateVenue() {
   const navigate = useNavigate();
@@ -42,8 +43,8 @@ export default function CreateVenue() {
 
       resetForm();
       navigate(`/venue/${newVenue.id}`);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      toast.error(`${error}`, { position: "bottom-right" });
     }
   };
 

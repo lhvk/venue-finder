@@ -22,3 +22,31 @@ export const buttonStyles = css`
     opacity: 0.5;
   }
 `;
+
+export function staticDatePickerStyles(isTablet) {
+  const customStyles = {
+    ".MuiDialogActions-root": {
+      display: "none",
+    },
+    "&.MuiPickersLayout-root": {
+      alignItems: isTablet ? "flex-start" : "flex-end",
+      minWidth: isTablet ? "100%" : "280px",
+      display: "flex",
+      flexDirection: "column",
+
+      ".MuiPickersLayout-contentWrapper": {
+        ".MuiDateCalendar-root": {
+          width: "unset",
+        },
+      },
+      ".MuiPickersCalendarHeader-root": {
+        padding: 0,
+      },
+      ".MuiPickersCalendarHeader-labelContainer": {
+        fontSize: "1.6rem",
+      },
+    },
+  };
+
+  return customStyles;
+}

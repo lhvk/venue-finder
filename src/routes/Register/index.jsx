@@ -5,6 +5,7 @@ import { fetchOptions } from "../../api";
 import { useNavigate } from "react-router-dom";
 import { registerSchema } from "../../schemas";
 import { RegistrationForm } from "../../forms/RegistrationForm";
+import { toast } from "react-toastify";
 
 export default function Register() {
   const {
@@ -20,14 +21,18 @@ export default function Register() {
   const onSubmit = async (formData) => {
     try {
       const response = await fetch(REGISTER_URL, fetchOptions(formData, POST));
+      const data = await response.json();
 
-      if (!response.ok)
-        throw new Error(`Something went wrong: ${response.status} `);
+      if (!response.ok) throw new Error(data.errors[0].message);
+
       resetForm();
-      window.alert("User successfully createed! You can now login");
+      toast.success("User successfully created! You can now login", {
+        position: "bottom-right",
+      });
       navigate("/login");
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.log(error);
+      toast.error(`${error}`, { position: "bottom-right" });
     }
   };
 

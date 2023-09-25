@@ -29,15 +29,13 @@ export async function handleProfileFormSubmit(
 
     const data = await response.json();
 
-    console.log("data", data);
-
     let updatedProfileInfo = {
       ...profileInfo,
     };
 
     if (formData.avatar) {
       updatedProfileInfo.avatar = data.avatar;
-      resetForm();
+      resetForm(updatedProfileInfo);
       closeAvatarModal();
       localStorage.setItem("user", JSON.stringify(updatedProfileInfo));
     }
@@ -49,7 +47,7 @@ export async function handleProfileFormSubmit(
       localStorage.setItem("user", JSON.stringify(updatedProfileInfo));
     }
   } catch (error) {
-    toast.error(error, { position: "bottom-right" });
+    toast.error(`${error}`, { position: "bottom-right" });
   } finally {
     setIsSubmitting(false);
     toast.success(

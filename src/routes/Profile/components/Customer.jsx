@@ -28,7 +28,7 @@ export function Customer({
 
   return (
     <>
-      <h2>Upcoming bookings</h2>
+      <h2 style={{ marginBottom: "10px" }}>Upcoming bookings</h2>
 
       {isLoading && <Loader message={"your bookings"} />}
 
