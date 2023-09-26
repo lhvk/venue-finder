@@ -12,7 +12,12 @@ import {
   VenueManagerContainer,
 } from "../styled";
 
-export function RegistrationForm({ handleSubmit, register, errors }) {
+export function RegistrationForm({
+  handleSubmit,
+  register,
+  errors,
+  isSubmitting,
+}) {
   return (
     <FormContainer>
       <Form
@@ -71,7 +76,11 @@ export function RegistrationForm({ handleSubmit, register, errors }) {
           </VenueManagerContainer>
         </FormBody>
         <FormFooter>
-          <Button type="submit">Submit</Button>
+          <Button
+            type="submit"
+            disabled={isSubmitting}>
+            Submit
+          </Button>
           <span>
             Already a user? <RegisterLink to="/login">Login here</RegisterLink>
           </span>

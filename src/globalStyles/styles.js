@@ -45,6 +45,9 @@ export function staticDatePickerStyles(isTablet) {
       ".MuiPickersCalendarHeader-labelContainer": {
         fontSize: "1.6rem",
       },
+      ".MuiPickersDay-root": {
+        pointerEvents: "none",
+      },
     },
   };
 

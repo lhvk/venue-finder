@@ -6,8 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { registerSchema } from "../../schemas";
 import { RegistrationForm } from "../../forms/RegistrationForm";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 export default function Register() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     register,
     handleSubmit,
@@ -20,6 +22,10 @@ export default function Register() {
 
   const onSubmit = async (formData) => {
     try {
+      if (isSubmitting) return;
+
+      setIsSubmitting(true);
+
       const response = await fetch(REGISTER_URL, fetchOptions(formData, POST));
       const data = await response.json();
 
@@ -31,8 +37,9 @@ export default function Register() {
       });
       navigate("/login");
     } catch (error) {
-      console.log(error);
       toast.error(`${error}`, { position: "bottom-right" });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -43,6 +50,7 @@ export default function Register() {
         handleSubmit={handleSubmit(onSubmit)}
         register={register}
         errors={errors}
+        isSubmitting={isSubmitting}
       />
     </main>
   );
