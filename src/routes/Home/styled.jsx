@@ -12,3 +12,8 @@ export const GridContainer = styled.div`
   max-width: 100%;
   margin: 20px;
 `;
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-block: 20px;
+`;

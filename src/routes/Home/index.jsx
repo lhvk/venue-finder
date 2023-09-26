@@ -1,36 +1,29 @@
-import { useState } from "react";
 import { Card } from "../../components/Card";
 import Hero from "../../components/Hero";
 import { Loader } from "../../components/Loader";
 import SearchBar from "../../components/SearchBar";
 import { VENUE_URL } from "../../config";
-import { useFetch } from "../../hooks/useFetch";
-import { CardSection, GridContainer } from "./styled";
+import { ButtonContainer, CardSection, GridContainer } from "./styled";
+import { useFetchWithPagination } from "../../hooks/useFetchWithPagination";
+import { Button } from "../../components/Buttons/Button";
 
 export default function Home() {
-  const { data: venues, isLoading, isError } = useFetch(VENUE_URL);
-  const [searchResult, setSearchResult] = useState({
-    query: "",
-    list: [],
-  });
+  const {
+    venuesData: data,
+    isLoading,
+    isError,
+    loadMoreData,
+  } = useFetchWithPagination(VENUE_URL);
 
   return (
     <main>
-      <Hero
-        children={
-          <SearchBar
-            setSearchResult={setSearchResult}
-            searchResult={searchResult}
-            venues={venues}
-          />
-        }
-      />
+      <Hero children={<SearchBar />} />
       <CardSection>
         {isLoading && <Loader message={"venues"} />}
         <GridContainer>
           {isError && <p>An error has occurred...</p>}
 
-          {venues.map((venue) => (
+          {data.map((venue) => (
             <Card
               key={venue.id}
               id={venue.id}
@@ -44,6 +37,9 @@ export default function Home() {
           ))}
         </GridContainer>
       </CardSection>
+      <ButtonContainer>
+        <Button onClick={loadMoreData}>More results...</Button>
+      </ButtonContainer>
     </main>
   );
 }

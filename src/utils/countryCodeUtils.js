@@ -208,22 +208,15 @@ const continents = [
   "South America",
 ];
 
-// Get random flag to populate venues where there country is misspelled or no country is set
-function getRandomCountryCode() {
-  const countriesArray = Object.values(countryCodes);
-  const randomIndex = Math.floor(Math.random() * countriesArray.length);
-  return countriesArray[randomIndex];
-}
-
 export function getFlag(countryName) {
   // Remove spaces and symbols from the country name
   const cleanedCountryName = countryName
     .replace(/[^\w\s]/g, "")
     .replace(/\s/g, "");
 
-  // Check if the cleaned country name exists in the countryCodes object. If not, populate with random flag
+  // Check if the cleaned country name exists in the countryCodes object. If not, set Norway to default flag
   if (!countryCodes.hasOwnProperty(cleanedCountryName)) {
-    return `https://flagsapi.com/${getRandomCountryCode()}/flat/24.png`;
+    return `https://flagsapi.com/NO/flat/24.png`;
   }
 
   // Get the country code and return the flag URL

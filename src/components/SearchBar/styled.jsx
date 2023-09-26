@@ -49,7 +49,8 @@ export const ResultItem = styled.li`
   cursor: pointer;
   padding-block: 8px;
 
-  &:hover {
+  &:hover,
+  &.active-list-item {
     background-color: var(--clr-grey);
   }
 `;
@@ -66,5 +67,6 @@ export const VenueLink = styled(Link)`
 
 export const NoResults = styled.span`
   color: var(--clr-dark);
+  opacity: 0.8;
   text-align: left;
 `;

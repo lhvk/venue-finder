@@ -44,7 +44,7 @@ export default function CreateVenue() {
       resetForm();
       navigate(`/venue/${newVenue.id}`);
     } catch (error) {
-      toast.error(`${error}`, { position: "bottom-right" });
+      toast.error(error, { position: "bottom-right" });
     }
   };
 

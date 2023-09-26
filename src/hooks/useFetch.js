@@ -24,6 +24,8 @@ export function useFetch(url, uploadData = undefined, token = undefined) {
         const response = await fetch(url, fetchOptions);
         const responseData = await response.json();
 
+        if (!response.ok) throw new Error();
+
         setData(responseData);
       } catch (error) {
         toast.error(`${error}`, { position: "bottom-right" });

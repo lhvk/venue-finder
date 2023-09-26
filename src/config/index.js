@@ -27,6 +27,7 @@ export const VENUE_URL = `${BASE_URL}/${VENUES}`;
 export const BOOKINGS_URL = `${BASE_URL}/${BOOKINGS}`;
 
 // Fetch methods
+export const GET = "GET";
 export const POST = "POST";
 export const PUT = "PUT";
 export const DELETE = "DELETE";
