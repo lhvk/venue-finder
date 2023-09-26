@@ -10,6 +10,7 @@ import { TABLET } from "../../../config";
 import { useMediaQuery } from "@mui/material";
 import { Line } from "../../../components/Line";
 import { staticDatePickerStyles } from "../../../globalStyles/styles";
+import { PopoverBox } from "../../../components/PopoverBox";
 
 export function BookVenue({ venue, accessToken, isVenueManager }) {
   const isTablet = useMediaQuery(TABLET);
@@ -71,8 +72,9 @@ export function BookVenue({ venue, accessToken, isVenueManager }) {
             marginLeft: isTablet ? 0 : "auto",
             marginTop: isTablet ? "20px" : 0,
           }}>
-          Available dates
+          Available dates <PopoverBox />
         </h3>
+
         <StaticDatePicker
           shouldDisableDate={(date) => disableBookedDates(date, venue)}
           disablePast
