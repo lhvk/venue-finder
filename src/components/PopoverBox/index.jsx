@@ -34,18 +34,19 @@ export function PopoverBox() {
           horizontal: "center",
         }}>
         <Typography
+          maxWidth="300px"
           display="flex"
-          alignItems="center"
+          alignItems="start"
           gap="8px"
           fontSize="inherit"
           padding="8px">
           <Icon
             id="info-icon"
-            width="16px"
-            height="16px"
+            width="24px"
+            height="24px"
             fill="var(--clr-dark)"
           />
-          Log in to book venues
+          Only registered customers are allowed to book venues
         </Typography>
       </Popover>
     </>

@@ -81,7 +81,7 @@ export function BookVenue({ venue, accessToken, isVenueManager }) {
           readOnly
           disableHighlightToday
           slotProps={{
-            calendarHeader: { disablePast: true },
+            calendarHeader: { disabled: true },
             toolbar: {
               hidden: true,
             },
