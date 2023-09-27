@@ -141,6 +141,7 @@ export default function Profile() {
               isSubmitting={isSubmitting}
               setUserData={setUserData}
               isLoading={isLoading}
+              setIsSubmitting={setIsSubmitting}
             />
           )}
         </StyledSection>

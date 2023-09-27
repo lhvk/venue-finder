@@ -65,7 +65,12 @@ export function Customer({
                   <ConfirmModal
                     isSubmitting={isSubmitting}
                     onClick={() =>
-                      handleDelete(booking.id, setUserData, setIsSubmitting)
+                      handleDelete(
+                        booking.id,
+                        setUserData,
+                        setIsSubmitting,
+                        closeConfirmModal
+                      )
                     }
                     closeModal={closeConfirmModal}
                     modalTitle={`Delete ${booking.venue.name}`}>

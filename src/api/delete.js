@@ -24,12 +24,11 @@ export async function deleteEntry(
     if (!response.ok) {
       throw new Error(`Error deleting entry: ${response.status}`);
     }
-
-    toast.success(`Entry has been deleted.`, { position: "bottom-right" });
   } catch (error) {
     toast.error(`${error}`, { position: "bottom-right" });
   } finally {
     closeModal();
     setIsSubmitting(false);
+    toast.success(`Entry has been deleted.`, { position: "bottom-right" });
   }
 }
