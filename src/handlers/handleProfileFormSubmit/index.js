@@ -33,17 +33,15 @@ export async function handleProfileFormSubmit(
       ...profileInfo,
     };
 
-    if (formData.avatar) {
-      updatedProfileInfo.avatar = data.avatar;
-      resetForm(updatedProfileInfo);
-      closeAvatarModal();
-      localStorage.setItem("user", JSON.stringify(updatedProfileInfo));
-    }
-
     if (formData.venueManager) {
       updatedProfileInfo.venueManager = data.venueManager;
       resetForm();
       closeManagerModal();
+      localStorage.setItem("user", JSON.stringify(updatedProfileInfo));
+    } else {
+      updatedProfileInfo.avatar = data.avatar;
+      resetForm(updatedProfileInfo);
+      closeAvatarModal();
       localStorage.setItem("user", JSON.stringify(updatedProfileInfo));
     }
   } catch (error) {

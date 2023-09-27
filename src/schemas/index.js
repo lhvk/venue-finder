@@ -13,7 +13,7 @@ const passwordYup = yup
   .string()
   .required("Password is required")
   .min(8, "Password must be at least 8 characters");
-const avatarYup = yup.string().url("Invalid URL format");
+const avatarYup = yup.string().url("Invalid URL format").nullable();
 
 const venueNameYup = yup.string().required("Name is required");
 const venueDescriptionYup = yup.string().required("Description is required");
@@ -60,7 +60,7 @@ export const loginSchema = yup.object().shape({
 });
 
 export const editAvatarSchema = yup.object().shape({
-  avatar: avatarYup || "",
+  avatar: avatarYup || null,
 });
 
 export const createVenueSchema = yup.object().shape({
