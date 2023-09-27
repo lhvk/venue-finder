@@ -26,7 +26,7 @@ export default function EditVenue() {
     handleSubmit,
     setValue,
     reset: resetForm,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {},
@@ -48,6 +48,8 @@ export default function EditVenue() {
 
   if (isError) return <p>an error occured..</p>;
 
+  console.log(isDirty);
+
   const onSubmit = (formData) => {
     handleEditVenue(formData, id, resetForm, navigate, accessToken);
   };
@@ -59,6 +61,7 @@ export default function EditVenue() {
         register={register}
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
+        isDirty={!isDirty}
       />
     </Main>
   );

@@ -15,7 +15,7 @@ import {
 } from "../styled";
 import { Button } from "../../components/Buttons";
 
-export function VenueForm({ handleSubmit, register, errors }) {
+export function VenueForm({ handleSubmit, register, errors, isDirty }) {
   return (
     <FormContainer>
       <Form
@@ -164,6 +164,7 @@ export function VenueForm({ handleSubmit, register, errors }) {
         </NumbersContainer>
         <FormFooter>
           <Button
+            disabled={isDirty}
             $maxWidth="100%"
             type="submit">
             Submit
