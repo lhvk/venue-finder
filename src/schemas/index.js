@@ -17,7 +17,32 @@ const avatarYup = yup.string().url("Invalid URL format").nullable();
 
 const venueNameYup = yup.string().required("Name is required");
 const venueDescriptionYup = yup.string().required("Description is required");
-const venueMediaYup = yup.array().of(yup.string()).ensure();
+const venueMediaYup = yup
+  .mixed()
+  .test("is-valid-media", "Invalid media", (value) => {
+    if (value === null) return true;
+
+    if (typeof value === "string") {
+      const urls = value.split(",").map((url) => url.trim());
+      return urls.every((url) =>
+        yup.string().url("Invalid URL").isValidSync(url)
+      );
+    }
+
+    if (Array.isArray(value)) {
+      return value.every((url) =>
+        yup.string().url("Invalid URL").isValidSync(url.trim())
+      );
+    }
+
+    return false;
+  })
+  .transform((value) => {
+    if (typeof value === "string") {
+      return value.split(",").map((url) => url.trim());
+    }
+    return value;
+  });
 const venuePriceYup = yup
   .number()
   .positive()

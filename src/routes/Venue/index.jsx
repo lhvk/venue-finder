@@ -21,6 +21,7 @@ import {
 import { getLocalStorageItem } from "../../utils/localStorageUtils";
 import { useMediaQuery } from "@mui/material";
 import { Line } from "../../components/Line";
+import { Helmet } from "react-helmet-async";
 
 export default function Venue() {
   const { id } = useParams();
@@ -43,6 +44,7 @@ export default function Venue() {
 
   return (
     <VenueMain>
+      <Helmet title={`Venue Finder | ${venue.name}`} />
       <VenueContainer>
         <VenueImage
           venue={venue}

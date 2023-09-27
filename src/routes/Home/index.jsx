@@ -6,6 +6,7 @@ import { VENUE_URL } from "../../config";
 import { ButtonContainer, CardSection, GridContainer } from "./styled";
 import { useFetchWithPagination } from "../../hooks/useFetchWithPagination";
 import { Button } from "../../components/Buttons/Button";
+import { Helmet } from "react-helmet-async";
 
 export default function Home() {
   const {
@@ -17,6 +18,7 @@ export default function Home() {
 
   return (
     <main>
+      <Helmet title="Venue Finder | Home" />
       <Hero children={<SearchBar />} />
       <CardSection>
         {isLoading && <Loader message={"venues"} />}

@@ -33,7 +33,7 @@ export async function handleProfileFormSubmit(
       ...profileInfo,
     };
 
-    if (formData.venueManager) {
+    if (!isAvatarModalOpen) {
       updatedProfileInfo.venueManager = data.venueManager;
       resetForm();
       closeManagerModal();

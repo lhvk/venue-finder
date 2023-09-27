@@ -7,6 +7,7 @@ import { registerSchema } from "../../schemas";
 import { RegistrationForm } from "../../forms/RegistrationForm";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 export default function Register() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,6 +46,7 @@ export default function Register() {
 
   return (
     <main>
+      <Helmet title="Venue Finder | Register" />
       <h1 style={{ textAlign: "center" }}>Register</h1>
       <RegistrationForm
         handleSubmit={handleSubmit(onSubmit)}

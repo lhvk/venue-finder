@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { Main } from "../../components/Main";
 import { PageHeader } from "../../components/PageHeader";
 import { handleEditVenue } from "../../handlers/handleEditVenue";
+import { Helmet } from "react-helmet-async";
 
 export default function EditVenue() {
   const navigate = useNavigate();
@@ -48,14 +49,13 @@ export default function EditVenue() {
 
   if (isError) return <p>an error occured..</p>;
 
-  console.log(isDirty);
-
   const onSubmit = (formData) => {
     handleEditVenue(formData, id, resetForm, navigate, accessToken);
   };
 
   return (
     <Main>
+      <Helmet title={`Edit venue | ${venue.name}`} />
       <PageHeader pageTitle="Edit venue" />
       <EditVenueForm
         register={register}

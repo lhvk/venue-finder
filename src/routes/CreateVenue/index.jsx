@@ -10,6 +10,7 @@ import { createVenueDefaultValues } from "../../schemas/createVenueDefaultValues
 import { PageHeader } from "../../components/PageHeader";
 import { Main } from "../../components/Main";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 export default function CreateVenue() {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ export default function CreateVenue() {
 
   return (
     <Main>
+      <Helmet title="venueFinder - Create Venue" />
       <PageHeader pageTitle="Create venue" />
       <CreateVenueForm
         register={register}

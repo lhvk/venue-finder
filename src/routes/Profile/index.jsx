@@ -19,6 +19,7 @@ import {
 import { handleProfileFormSubmit } from "../../handlers";
 import { Navigate } from "react-router-dom";
 import { Line } from "../../components/Line";
+import { Helmet } from "react-helmet-async";
 
 export default function Profile() {
   const profileInfo = getLocalStorageItem("user");
@@ -103,6 +104,7 @@ export default function Profile() {
 
   return (
     <ProfileMain>
+      <Helmet title={`Venue Finder | ${userName}`} />
       <ProfileContainer>
         <StyledSection>
           <ProfileImage

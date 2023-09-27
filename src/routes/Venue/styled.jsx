@@ -74,7 +74,7 @@ export const VenueTitle = styled.div`
 export const EditVenueContainer = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: inherit;
 `;
 
 export const VenueLocation = styled.div`
@@ -102,6 +102,50 @@ export const VenuePrice = styled.div`
     font-size: 2.2rem;
     font-weight: bold;
   }
+`;
+
+export const ArrowContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  padding: 10px;
+`;
+
+export const Arrow = styled.button`
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--clr-white);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 3rem;
+  transition: background-color 300ms ease-in-out;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+`;
+
+export const CarouselContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+`;
+
+export const ImageIndex = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--clr-white);
+  border-radius: 0 0 10px 10px;
 `;
 
 export const StyledSection = styled.section`

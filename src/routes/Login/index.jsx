@@ -7,6 +7,7 @@ import { setLocalStorageItem } from "../../utils/localStorageUtils";
 import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../../forms/LoginForm";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 export default function Login() {
   const {
@@ -33,6 +34,7 @@ export default function Login() {
 
   return (
     <main>
+      <Helmet title="Venue Finder | Login" />
       <h1 style={{ textAlign: "center" }}>Login</h1>
       <LoginForm
         handleSubmit={handleSubmit(onSubmit)}

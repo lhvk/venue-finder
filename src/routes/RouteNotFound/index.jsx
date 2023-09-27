@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { NavLink } from "react-router-dom";
 
 export default function RouteNotFound() {
@@ -6,6 +7,7 @@ export default function RouteNotFound() {
       style={{
         textAlign: "center",
       }}>
+      <Helmet title="404: Route not found" />
       <h1>Route not found</h1>
 
       <p>

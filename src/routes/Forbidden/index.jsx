@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { NavLink } from "react-router-dom";
 
 export default function Forbidden() {
@@ -6,6 +7,7 @@ export default function Forbidden() {
       style={{
         textAlign: "center",
       }}>
+      <Helmet title="Forbidden" />
       <h1>Forbidden: </h1>
       <h2>You are not authorized to view this page</h2>
       <p>
