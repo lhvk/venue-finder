@@ -42,7 +42,7 @@ export const TagContainer = styled.div`
   position: absolute;
   top: 30px;
   right: 20px;
-  background: linear-gradient(var(--clr-pink), var(--clr-primary));
+  background: var(--gradient-primary);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;

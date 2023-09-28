@@ -37,7 +37,12 @@ export default function NavLinks({ isLoggedin, isHomePage }) {
     </nav>
   ) : (
     <nav>
-      <LoginLink to="/login">login</LoginLink> <Pipe />
+      <LoginLink
+        to="/login"
+        $px={!isHomePage ?? "0"}>
+        login
+      </LoginLink>{" "}
+      <Pipe />
       <HoverNavLink to="/register">register</HoverNavLink>
     </nav>
   );

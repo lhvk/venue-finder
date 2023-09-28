@@ -13,7 +13,7 @@ export const CopyRight = styled.div`
   font-size: 2rem;
 
   & .half-text {
-    color: var(--clr-pink);
+    // color: var(--logo-font-clr);
     font-weight: 600;
   }
 `;

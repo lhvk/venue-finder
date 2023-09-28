@@ -67,7 +67,7 @@ export const ModalBody = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: var(--clr-secondary);
     border-radius: 20px;
-    background: linear-gradient(var(--clr-pink), var(--clr-primary));
+    background: var(--gradient-primary);
   }
 `;
 

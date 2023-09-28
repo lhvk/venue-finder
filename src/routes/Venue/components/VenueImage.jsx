@@ -9,7 +9,10 @@ export function VenueImage({ venue, name }) {
   return (
     <VenueImgContainer>
       {venue?.media?.length > 1 ? (
-        <ImageCarousel images={venue.media} />
+        <ImageCarousel
+          images={venue.media}
+          altText={venue.name}
+        />
       ) : (
         <VenueImg
           src={venue.media?.[0] || PLACEHOLDER_IMG}

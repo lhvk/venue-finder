@@ -6,10 +6,11 @@ import {
   ImageIndex,
   VenueImg,
 } from "../styled";
+import { Icon } from "../../../components/Icon";
 
-export function ImageCarousel({ images }) {
+export function ImageCarousel({ images, altText }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  console.log(currentIndex);
+
   const nextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
@@ -24,11 +25,29 @@ export function ImageCarousel({ images }) {
     <CarouselContainer>
       <VenueImg
         src={images[currentIndex]}
-        alt=""
+        alt={altText}
       />
       <ArrowContainer>
-        <Arrow onClick={prevImage}>&lt;</Arrow>
-        <Arrow onClick={nextImage}>&gt;</Arrow>
+        <Arrow
+          onClick={prevImage}
+          title="previous">
+          <Icon
+            id="arrow-left"
+            fill="var(--clr-white)"
+            width="100%"
+            height="100%"
+          />
+        </Arrow>
+        <Arrow
+          onClick={nextImage}
+          title="next">
+          <Icon
+            id="arrow-right"
+            fill="var(--clr-white)"
+            width="100%"
+            height="100%"
+          />
+        </Arrow>
       </ArrowContainer>
       <ImageIndex>
         Image {currentIndex + 1}/{images.length}

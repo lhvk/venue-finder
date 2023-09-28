@@ -5,34 +5,55 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat&display=swap");
 
 :root {
-  /* Colors */
-  --clr-primary: #ff4b2b;
-  --clr-secondary: #5347a0;
+  /* Color Palette */
   --clr-white: #fff;
-  --clr-green: #008000;
+  --clr-green: #47817e;
   --clr-red: #ff0f0f;
+  --clr-reddish: #ff4563;
   --clr-dark: #333;
   --clr-grey: #f0f0f0;
-  --clr-pink: #ff007f;
+  --clr-pink: #e6007a;
   --clr-pink-lighter: #ff416c;
+  --clr-purple: #5347a0;
   --clr-purple-lighter: #958ab6;
+
+  /* Primary and Secondary Colors */
+  --clr-primary: var(--clr-pink);
+  --clr-secondary: var(--clr-purple);
 
   /* Fonts */
   --font-main: "Roboto", sans-serif;
   --font-heading: "Raleway", serif;
-  --clr-font-heading: var(--clr-pink);
+  --clr-font-heading: var(--clr-primary);
 
   /* Gradients */
   --gradient-primary: linear-gradient(
-    90deg,
-    var(--clr-pink),
-    var(--clr-primary)
+    to right top,
+    #e6007a,
+    #ed1976,
+    #f42873,
+    #fa356f,
+    #ff416c
   );
+
   --gradient-secondary: linear-gradient(
-    90deg,
-    var(--clr-secondary),
-    var(--clr-purple-lighter)
+    to right top,
+    #5347a0,
+    #574aa1,
+    #5a4da3,
+    #5e50a4,
+    #6153a5,
+    #7353a7,
+    #8453a8,
+    #9552a8,
+    #b64ba2,
+    #d44395,
+    #ed3e83,
+    #ff416c
   );
+
+  /* Logo font */
+  --logo-font-clr: var(--clr-primary);
 }
 
 *,

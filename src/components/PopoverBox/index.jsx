@@ -17,7 +17,7 @@ export function PopoverBox() {
           id="info-icon"
           width="20px"
           height="20px"
-          fill="var(--clr-pink)"
+          fill="var(--clr-primary)"
         />
       </PopoverButton>
       <Popover

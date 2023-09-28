@@ -16,7 +16,7 @@ export default function Forbidden() {
           to="/"
           style={{
             textDecoration: "underline",
-            color: "var(--clr-pink)",
+            color: "var(--clr-primary)",
             textAlign: "center",
           }}>
           home

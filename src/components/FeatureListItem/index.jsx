@@ -22,7 +22,7 @@ export function FeatureListItem({ hasFeature, featureName }) {
           </FeatureContainer>
           <Icon
             id="x-circle-icon"
-            fill="var(--clr-red)"
+            fill="var(--clr-reddish)"
             height="24px"
             width="24px"
           />

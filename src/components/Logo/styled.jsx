@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { HoverNavLink } from "../Header/styled";
+import { Link } from "react-router-dom";
 
-export const LogoLink = styled(HoverNavLink)`
+export const LogoLink = styled(Link)`
   color: ${(props) =>
     props.$isHomePage ? "var(--clr-white)" : "var(--clr-secondary)"};
   display: flex;
@@ -9,7 +9,7 @@ export const LogoLink = styled(HoverNavLink)`
   align-items: center;
   transition: opacity 300ms ease-in-out;
 
-  .half-text {
-    color: var(--clr-pink);
-  }
+  // .half-text {
+  //   color: var(--logo-font-clr);
+  // }
 `;

@@ -38,6 +38,7 @@ export const HeroBanner = styled.div`
 
 export const HeroHeading = styled.h1`
   color: var(--clr-white);
+  text-shadow: 5px 5px 5px #000;
 `;
 
 export const HeroLogo = styled.div`
@@ -50,7 +51,7 @@ export const HeroLogo = styled.div`
     }
   }
   .half-text {
-    color: var(--clr-pink);
+    color: var(--logo-font-clr);
   }
 
   .logo-slogan {

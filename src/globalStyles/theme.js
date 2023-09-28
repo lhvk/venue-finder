@@ -10,17 +10,17 @@ export const theme = createTheme({
         colorPrimary: {
           "&.Mui-checked": {
             // Controls checked color for the thumb
-            color: "var(--clr-pink)",
+            color: "var(--clr-primary)",
           },
         },
         track: {
           // Controls default (unchecked) color for the track
           opacity: 0.4,
-          backgroundColor: "var(--clr-pink)",
+          backgroundColor: "var(--clr-primary)",
           ".Mui-checked + &": {
             // Controls checked color for the track
             opacity: 0.7,
-            backgroundColor: "var(--clr-pink)!important",
+            backgroundColor: "var(--clr-primary)!important",
           },
         },
       },
@@ -70,7 +70,7 @@ export const theme = createTheme({
             "&.Mui-selected": {
               background: "var(--gradient-primary)",
               "&:hover, &:focus": {
-                backgroundColor: "var(--gradient-primary)",
+                backgroundColor: "var(--clr-primary)",
               },
             },
           },

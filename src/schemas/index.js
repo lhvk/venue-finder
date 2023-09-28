@@ -7,7 +7,7 @@ const emailYup = yup
   .required("Email is required")
   .matches(
     /^[a-zA-Z0-9._%+-]+@(stud\.)?noroff\.no$/,
-    "Only emails ending with stud@noroff.no is allowed"
+    "Only emails ending with @stud.noroff.no is allowed"
   );
 const passwordYup = yup
   .string()
