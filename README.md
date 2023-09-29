@@ -5,14 +5,14 @@
 
 ![Project Image](/src/assets/venue-finder-landingpage.png)
 
-**Venue Finder** is a web application that helps users discover and explore venues and events in their area. Whether you're looking for a restaurant, concert venue, or sports event, this app has you covered. It utilizes modern web technologies and a user-friendly interface to provide a seamless experience for users.
+**Venue Finder** is a web application that helps users discover and book venues. The API is provided by Noroff School of Technology and Media (Called Noroff from here) It utilizes modern web technologies and a user-friendly interface to provide a seamless experience for users. This was my final exam at Noroff. I hope you enjoy it!
 
 ## Features
 
-- **Search Venues:** Easily search for venues and events in your desired location.
-- **Date Pickers:** Select date ranges for your searches with user-friendly date pickers.
+- **Search venues:** Easily search for venues and events in your desired location.
+- **Book venues:** Select date ranges for your venues and the amount of guests.
 - **Responsive Design:** The app is designed to work smoothly on both desktop and mobile devices.
-- **Validation:** Input forms are equipped with validation to ensure accurate search results.
+- **Validation:** Input forms are equipped with validation to ensure accurate form submission.
 - **Toasts:** Informative toast messages provide feedback to users on their actions.
 
 ## Installation
@@ -50,9 +50,7 @@ To run this project locally, follow these steps:
 ## Usage
 
 Upon launching the app, you'll be presented with a search interface.
-Enter your desired location and date range.
-Click the "Search" button to find venues and events in that area.
-Explore the search results and discover exciting places and events.
+Enter your desired location or venue name. Explore the search results and discover exciting venues.
 
 ## Technologies Used
 
@@ -64,7 +62,8 @@ Explore the search results and discover exciting places and events.
 - Date-fns
 - Yup (for form validation)
 
-License
+## License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
