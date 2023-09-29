@@ -62,7 +62,7 @@ Explore the search results and discover exciting places and events.
 - Date-fns
 - Yup (for form validation)
 
-License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
