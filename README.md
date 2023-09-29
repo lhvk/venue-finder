@@ -1,7 +1,6 @@
 # Venue Finder
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 ![Project Image](/src/assets/venue-finder-landingpage.png)
 
@@ -61,10 +60,6 @@ Enter your desired location or venue name. Explore the search results and discov
 - Styled Components
 - Date-fns
 - Yup (for form validation)
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
 
