@@ -14,8 +14,17 @@ import {
   FormFooter,
 } from "../styled";
 import { Button } from "../../components/Buttons";
+import { Controller } from "react-hook-form";
 
-export function VenueForm({ handleSubmit, register, errors, isDirty }) {
+export function VenueForm({
+  handleSubmit,
+  register,
+  errors,
+  isDirty,
+  getValues,
+  control,
+  isEdit,
+}) {
   return (
     <FormContainer>
       <Form
@@ -84,19 +93,55 @@ export function VenueForm({ handleSubmit, register, errors, isDirty }) {
         <MetaSection>
           <div>
             <Label>Wifi</Label>
-            <Switch {...register("meta.wifi")} />
+            <Controller
+              control={control}
+              name="meta.wifi"
+              render={() => (
+                <Switch
+                  {...register("meta.wifi")}
+                  checked={isEdit && getValues("meta.wifi")}
+                />
+              )}
+            />
           </div>
           <div>
             <Label>Parking</Label>
-            <Switch {...register("meta.parking")} />
+            <Controller
+              control={control}
+              name="meta.parking"
+              render={() => (
+                <Switch
+                  {...register("meta.parking")}
+                  checked={isEdit && getValues("meta.parking")}
+                />
+              )}
+            />
           </div>
           <div>
             <Label>Breakfast</Label>
-            <Switch {...register("meta.breakfast")} />
+            <Controller
+              control={control}
+              name="meta.breakfast"
+              render={() => (
+                <Switch
+                  {...register("meta.breakfast")}
+                  checked={isEdit && getValues("meta.breakfast")}
+                />
+              )}
+            />
           </div>
           <div>
             <Label>Pets</Label>
-            <Switch {...register("meta.pets")} />
+            <Controller
+              control={control}
+              name="meta.pets"
+              render={() => (
+                <Switch
+                  {...register("meta.pets")}
+                  checked={isEdit && getValues("meta.pets")}
+                />
+              )}
+            />
           </div>
         </MetaSection>
         <div>

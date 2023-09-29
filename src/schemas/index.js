@@ -14,35 +14,60 @@ const passwordYup = yup
   .required("Password is required")
   .min(8, "Password must be at least 8 characters");
 const avatarYup = yup.string().url("Invalid URL format").nullable();
-
 const venueNameYup = yup.string().required("Name is required");
 const venueDescriptionYup = yup.string().required("Description is required");
 const venueMediaYup = yup
   .mixed()
-  .test("is-valid-media", "Invalid media", (value) => {
-    if (value === null) return true;
+  .test(
+    "is-valid-media",
+    "Either the URL is invalid or there are symbols that should not be present",
+    (value) => {
+      if (value === null) return true;
 
-    if (typeof value === "string") {
-      const urls = value.split(",").map((url) => url.trim());
-      return urls.every((url) =>
-        yup.string().url("Invalid URL").isValidSync(url)
-      );
+      if (typeof value === "string") {
+        // Check for invalid characters except commas (,) used as separators
+        if (/[^,a-zA-Z0-9://.\s]|,+(?![a-zA-Z0-9://.])/.test(value)) {
+          return false;
+        }
+
+        // Check for empty string or valid URLs separated by commas
+        if (value.trim() === "") {
+          return true; // Treat empty string as valid
+        }
+
+        const urls = value.split(",").map((url) => url.trim());
+
+        for (let i = 0; i < urls.length; i++) {
+          if (!yup.string().url("Invalid URL").isValidSync(urls[i])) {
+            return false; // Invalid URL in the list
+          }
+        }
+
+        return true;
+      }
+
+      if (Array.isArray(value)) {
+        return value.every((url) =>
+          yup.string().url("Invalid URL").isValidSync(url.trim())
+        );
+      }
+
+      return false;
     }
-
-    if (Array.isArray(value)) {
-      return value.every((url) =>
-        yup.string().url("Invalid URL").isValidSync(url.trim())
-      );
-    }
-
-    return false;
-  })
+  )
   .transform((value) => {
     if (typeof value === "string") {
+      if (value.trim() === "") {
+        return ""; // Convert empty string to just an empty string
+      }
+      // Remove trailing comma if present
+      value = value.trim().replace(/,+$/, "");
+
       return value.split(",").map((url) => url.trim());
     }
     return value;
   });
+
 const venuePriceYup = yup
   .number()
   .positive()

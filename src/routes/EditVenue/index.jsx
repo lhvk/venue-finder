@@ -1,7 +1,7 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { VenueForm as EditVenueForm } from "../../forms/VenueForm";
 import { getLocalStorageItem } from "../../utils/localStorageUtils";
-import { createVenueSchema } from "../../schemas";
+import { createVenueSchema as editVenueSchema } from "../../schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useFetch } from "../../hooks/useFetch";
@@ -20,16 +20,16 @@ export default function EditVenue() {
   const { id } = useParams();
   const { data: venue, isLoading, isError } = useFetch(`${VENUE_URL}/${id}`);
 
-  let schema = createVenueSchema;
-
   const {
     register,
     handleSubmit,
     setValue,
+    getValues,
+    control,
     reset: resetForm,
     formState: { errors, isDirty },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(editVenueSchema),
     defaultValues: {},
   });
 
@@ -62,6 +62,9 @@ export default function EditVenue() {
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
         isDirty={!isDirty}
+        getValues={getValues}
+        control={control}
+        isEdit={true}
       />
     </Main>
   );

@@ -22,6 +22,7 @@ export default function CreateVenue() {
   const {
     register,
     handleSubmit,
+    control,
     reset: resetForm,
     formState: { errors },
   } = useForm({
@@ -57,6 +58,7 @@ export default function CreateVenue() {
         register={register}
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
+        control={control}
       />
     </Main>
   );

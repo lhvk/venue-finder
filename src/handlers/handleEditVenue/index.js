@@ -14,6 +14,7 @@ export const handleEditVenue = async (
       `${VENUE_URL}/${id}`,
       fetchOptions(formData, PUT, accessToken)
     );
+
     if (!response.ok)
       throw new Error(`Something went wrong: ${response.status} `);
 

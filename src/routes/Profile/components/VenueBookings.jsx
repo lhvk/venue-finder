@@ -27,15 +27,13 @@ export function VenueBookings({ venueId }) {
       {selectedVenue?.bookings?.length === 0 ? (
         <p>You have no upcoming bookings on this venue..</p>
       ) : (
-        selectedVenue?.bookings?.map((booking) => {
-          return (
-            <ul>
-              <li key={booking.id}>
-                {formatDate(booking.dateFrom)} - {formatDate(booking.dateTo)}
-              </li>
-            </ul>
-          );
-        })
+        <ul>
+          {selectedVenue?.bookings?.map((booking) => (
+            <li key={booking.id}>
+              {formatDate(booking.dateFrom)} - {formatDate(booking.dateTo)}
+            </li>
+          ))}
+        </ul>
       )}
     </>
   );

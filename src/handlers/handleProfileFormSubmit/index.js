@@ -49,9 +49,7 @@ export async function handleProfileFormSubmit(
   } finally {
     setIsSubmitting(false);
     toast.success(
-      isAvatarModalOpen
-        ? "Avatar image updated"
-        : "You are now a Venue Manager",
+      isAvatarModalOpen ? "Avatar updated" : "You are now a Venue Manager",
       { position: "bottom-right" }
     );
   }
