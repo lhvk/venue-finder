@@ -25,13 +25,15 @@ To run this project locally, follow these steps:
 
 2. Install the project dependencies using npm or yarn.
 
-   ```npm install # or yarn install```
+   ```npm install
+   # or
+   yarn install```
 
-3. Start the development server.
+4. Start the development server.
 
    ```npm start # or yarn start```
 
-4. Open your web browser and visit http://localhost:3000 to access the app.
+5. Open your web browser and visit http://localhost:3000 to access the app.
 
 Usage
 Upon launching the app, you'll be presented with a search interface.
