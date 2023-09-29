@@ -25,11 +25,9 @@ export const Content = styled.div`
   width: 100%;
 `;
 
-export const Title = styled.span`
+export const Title = styled.h3`
   font-size: 24px;
-  font-weight: 900;
   display: block;
-  margin-bottom: 8px;
   color: var(--clr-white);
 `;
 
