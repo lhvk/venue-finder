@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Venue Finder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-## Available Scripts
+**Venue Finder** is a web application that helps users discover and explore venues and events in their area. Whether you're looking for a restaurant, concert venue, or sports event, this app has you covered. It utilizes modern web technologies and a user-friendly interface to provide a seamless experience for users.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Search Venues:** Easily search for venues and events in your desired location.
+- **Date Pickers:** Select date ranges for your searches with user-friendly date pickers.
+- **Responsive Design:** The app is designed to work smoothly on both desktop and mobile devices.
+- **Validation:** Input forms are equipped with validation to ensure accurate search results.
+- **Toasts:** Informative toast messages provide feedback to users on their actions.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To run this project locally, follow these steps:
 
-### `npm test`
+1. Clone the repository to your local machine.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone https://github.com/yourusername/venue-finder.git
+   ```
 
-### `npm run build`
+2. Install the project dependencies using npm or yarn.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   `npm install # or yarn install`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Start the development server.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   `npm start # or yarn start`
 
-### `npm run eject`
+4. Open your web browser and visit http://localhost:3000 to access the app.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Usage
+Upon launching the app, you'll be presented with a search interface.
+Enter your desired location and date range.
+Click the "Search" button to find venues and events in that area.
+Explore the search results and discover exciting places and events.
+Technologies Used
+React.js
+Material-UI
+React Router
+React Hook Form
+Styled Components
+Date-fns
+Yup (for form validation)
+Contributing
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Fork the repository.
+Create a new branch for your feature or bug fix.
+Make your changes and commit them with descriptive commit messages.
+Push your changes to your forked repository.
+Open a pull request to the main repository.
+Please make sure to follow the Code of Conduct when contributing.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Acknowledgments
+Special thanks to the open-source community for providing the tools and libraries used in this project.
+Contact
+If you have any questions or feedback, feel free to reach out to us at lars.kallak@gmail.com.
