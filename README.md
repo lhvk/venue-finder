@@ -3,6 +3,8 @@
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
+![Project Image](/src/assets/venue-finder-landingpage.png)
+
 **Venue Finder** is a web application that helps users discover and explore venues and events in their area. Whether you're looking for a restaurant, concert venue, or sports event, this app has you covered. It utilizes modern web technologies and a user-friendly interface to provide a seamless experience for users.
 
 ## Features
@@ -28,12 +30,12 @@ To run this project locally, follow these steps:
    ```
    npm install
    ```
-   
+
    ```
    yarn install
    ```
 
-4. Start the development server using npm or yarn.
+3. Start the development server using npm or yarn.
 
    ```
    npm start
@@ -43,7 +45,7 @@ To run this project locally, follow these steps:
    yarn start
    ```
 
-6. Open your web browser and visit http://localhost:3000 to access the app.
+4. Open your web browser and visit http://localhost:3000 to access the app.
 
 ## Usage
 
