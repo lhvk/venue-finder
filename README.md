@@ -48,9 +48,7 @@ To run this project locally, follow these steps:
 ## Usage
 
 Upon launching the app, you'll be presented with a search interface.
-Enter your desired location or venue name.
-Click the "Search" button to find venues and events in that area.
-Explore the search results and discover exciting places and events.
+Enter your desired location or venue name. Explore the search results and discover exciting venues.
 
 ## Technologies Used
 
