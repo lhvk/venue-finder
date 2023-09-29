@@ -33,33 +33,30 @@ To run this project locally, follow these steps:
 
 4. Open your web browser and visit http://localhost:3000 to access the app.
 
-Usage
+## Usage
+
 Upon launching the app, you'll be presented with a search interface.
 Enter your desired location and date range.
 Click the "Search" button to find venues and events in that area.
 Explore the search results and discover exciting places and events.
-Technologies Used
-React.js
-Material-UI
-React Router
-React Hook Form
-Styled Components
-Date-fns
-Yup (for form validation)
-Contributing
-Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
-Fork the repository.
-Create a new branch for your feature or bug fix.
-Make your changes and commit them with descriptive commit messages.
-Push your changes to your forked repository.
-Open a pull request to the main repository.
-Please make sure to follow the Code of Conduct when contributing.
+## Technologies Used
+
+- React.js
+- Material-UI
+- React Router
+- React Hook Form
+- Styled Components
+- Date-fns
+- Yup (for form validation)
 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Acknowledgments
+## Acknowledgments
+
 Special thanks to the open-source community for providing the tools and libraries used in this project.
-Contact
+
+## Contact
+
 If you have any questions or feedback, feel free to reach out to us at lars.kallak@gmail.com.
