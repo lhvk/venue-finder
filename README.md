@@ -29,8 +29,6 @@ To run this project locally, follow these steps:
    npm install
    ```
    
-   #or
-   
    ```
    yarn install
    ```
@@ -40,7 +38,7 @@ To run this project locally, follow these steps:
    ```
    npm start
    ```
-   #or
+
    ```
    yarn start
    ```
