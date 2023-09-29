@@ -33,7 +33,7 @@ To run this project locally, follow these steps:
    yarn install
    ```
 
-4. Start the development server.
+4. Start the development server using npm or yarn.
 
    ```
    npm start
