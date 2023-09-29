@@ -20,16 +20,16 @@ To run this project locally, follow these steps:
 1. Clone the repository to your local machine.
 
    ```bash
-   git clone https://github.com/yourusername/venue-finder.git
+   git clone https://github.com/lhvk/venue-finder.git
    ```
 
 2. Install the project dependencies using npm or yarn.
 
-   `npm install # or yarn install`
+   ```npm install # or yarn install```
 
 3. Start the development server.
 
-   `npm start # or yarn start`
+   ```npm start # or yarn start```
 
 4. Open your web browser and visit http://localhost:3000 to access the app.
 
