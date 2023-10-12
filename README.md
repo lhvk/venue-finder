@@ -4,7 +4,7 @@
 
 ![Project Image](/src/assets/venue-finder-landingpage.png)
 
-**Venue Finder** is a web application that helps users discover and book venues. The API is provided by Noroff School of Technology and Media (Called Noroff from here) It utilizes modern web technologies and a user-friendly interface to provide a seamless experience for users. This was my final exam at Noroff. I hope you enjoy it!
+**Venue Finder** is a web application that helps users discover and book venues. The API is provided by Noroff School of Technology and Media. It utilizes modern web technologies and a user-friendly interface to provide a seamless experience for users. This was my final exam at Noroff. I hope you enjoy it!
 
 ## Features
 
@@ -67,4 +67,4 @@ Special thanks to the open-source community for providing the tools and librarie
 
 ## Contact
 
-If you have any questions or feedback, feel free to reach out to us at lars.kallak@gmail.com.
+If you have any questions or feedback, feel free to reach out to me at lars.kallak@gmail.com.
